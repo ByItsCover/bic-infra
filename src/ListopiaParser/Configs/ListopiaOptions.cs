@@ -1,4 +1,4 @@
-namespace ListopiaParser;
+namespace ListopiaParser.Configs;
 
 public class ListopiaOptions
 {

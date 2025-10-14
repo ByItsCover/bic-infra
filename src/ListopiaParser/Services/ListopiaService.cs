@@ -1,16 +1,16 @@
 using AngleSharp;
+using ListopiaParser.Configs;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace ListopiaParser;
+namespace ListopiaParser.Services;
 
 public class ListopiaService
 {
     private readonly HttpClient _client;
     private readonly ListopiaOptions _options;
     private readonly IBrowsingContext _context;
-    private const int PageSwitchDelay = 1000;
 
     public ListopiaService(HttpClient client, IOptions<ListopiaOptions> options)
     {
@@ -20,22 +20,10 @@ public class ListopiaService
         var config = Configuration.Default.WithDefaultLoader();
         _context = BrowsingContext.New(config);
     }
-
-    public async Task<List<string>> GetIsbns(int pages, CancellationToken cancellationToken)
-    {
-        var isbnList = new List<string>();
-        for (var i = 0; i < pages; i++)
-        {
-            var isbns = await GetListPageIsbns(i+1, cancellationToken);
-            isbnList.AddRange(isbns);
-            await Task.Delay(PageSwitchDelay, cancellationToken);
-            Console.WriteLine("At page: " + (i+1));
-        }
-        return isbnList;
-    }
     
-    private async Task<string[]> GetListPageIsbns(int pageNumber, CancellationToken cancellationToken)
+    public async Task<string[]> GetListopiaIsbns(int pageNumber, CancellationToken cancellationToken)
     {
+        Console.WriteLine("Starting listopia parse page " + pageNumber);
         var request = new HttpRequestMessage(HttpMethod.Get, ToAbsolute(_options.ListopiaURL, $"?page={pageNumber}"));
         var response = await _client.SendAsync(request, cancellationToken);
         response.EnsureSuccessStatusCode();
@@ -45,8 +33,8 @@ public class ListopiaService
         var bookTitleElements = document.QuerySelectorAll("#all_votes tr a.bookTitle");
         var bookUrls = bookTitleElements.Select(x => ToAbsolute(_options.GoodreadsBase, x.GetAttribute("href"))).ToList();
 
-        var isbnList = await Task.WhenAll(bookUrls.Select(x => GetBookIsbn(x, cancellationToken)));
-        return isbnList;
+        var isbnArray = await Task.WhenAll(bookUrls.Select(x => GetBookIsbn(x, cancellationToken)));
+        return isbnArray;
     }
 
     private async Task<string> GetBookIsbn(string url, CancellationToken cancellationToken)
@@ -66,9 +54,14 @@ public class ListopiaService
         
         var jsonData = (JObject?)JsonConvert.DeserializeObject(scriptElement.TextContent);
         var isbn = jsonData?.Descendants().OfType<JObject>()
-            .First(x => (string?)x["__typename"] == "BookDetails")["isbn13"]?
-            .ToString();
-        return isbn ?? string.Empty;
+            .First(x => (string?)x["__typename"] == "BookDetails")["isbn13"];
+        
+        if (isbn == null)
+        {
+            throw new ArgumentNullException(nameof(isbn), "ISBN-13 was not found");
+        }
+        
+        return isbn.ToString();
     }
     
     private static string ToAbsolute(string startingUrl, string? relativeUrl)
