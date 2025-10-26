@@ -1,7 +1,13 @@
+# OpenAI CLIP
+
 torch
 torchvision
 ftfy
 regex
 tqdm
 git+https://github.com/openai/CLIP.git
+
+# Lightning-AI LitServe
+aiohttp
+litserve
 
