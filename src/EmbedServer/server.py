@@ -4,7 +4,6 @@ import torch
 from torch import Tensor
 import clip
 
-import json
 import asyncio
 import aiohttp
 from aiohttp import ClientSession
@@ -14,7 +13,7 @@ from litserve import Request
 import litserve as ls
 
 
-class ClipServer(ls.LitAPI):
+class EmbedServer(ls.LitAPI):
     def setup(self, device):
         self.model_name = "ViT-B/32"
         self.device = device
@@ -40,7 +39,6 @@ class ClipServer(ls.LitAPI):
                 was_processed.append(True)
         
         print(f"Got {len(processed_images)} images")
-        #print(f"First image: {processed_images[0]}")
         return torch.cat(processed_images, dim=0), was_processed
     
     async def _get_image(self, url: str | None, session: ClientSession):
@@ -77,5 +75,5 @@ class ClipServer(ls.LitAPI):
 
 
 if __name__ == "__main__":
-    server = ls.LitServer(ClipServer())
+    server = ls.LitServer(EmbedServer())
     server.run(port=8000, generate_client_file=False)

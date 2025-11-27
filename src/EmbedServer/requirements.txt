@@ -1,5 +1,4 @@
 # OpenAI CLIP
-
 torch
 torchvision
 ftfy
@@ -10,4 +9,3 @@ git+https://github.com/openai/CLIP.git
 # Lightning-AI LitServe
 aiohttp
 litserve
-

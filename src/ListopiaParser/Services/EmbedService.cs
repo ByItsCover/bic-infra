@@ -7,12 +7,12 @@ using Microsoft.Extensions.Options;
 
 namespace ListopiaParser.Services;
 
-public class ClipService : IClipService
+public class EmbedService : IEmbedService
 {
     private readonly HttpClient _client;
-    private readonly ClipOptions _options;
+    private readonly EmbedOptions _options;
 
-    public ClipService(HttpClient client, IOptions<ClipOptions> options)
+    public EmbedService(HttpClient client, IOptions<EmbedOptions> options)
     {
         _client = client;
         _options = options.Value;
@@ -20,7 +20,7 @@ public class ClipService : IClipService
 
     public async Task<IEnumerable<Cover>> GetCoverEmbeddings(List<Edition> editionList, CancellationToken cancellationToken)
     {
-        var request = new HttpRequestMessage(HttpMethod.Post, _options.ClipUrl);
+        var request = new HttpRequestMessage(HttpMethod.Post, _options.EmbedUrl);
         request.Content = JsonContent.Create( new
         {
             image_urls = editionList.Select(x => x.Image?.Url)

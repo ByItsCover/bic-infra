@@ -15,7 +15,7 @@ public class ListopiaParserRunnerTests
 {
     private Mock<IListopiaService> _listopiaServiceMock;
     private Mock<IHardcoverService> _hardcoverServiceMock;
-    private Mock<IClipService> _clipServiceMock;
+    private Mock<IEmbedService> _embedServiceMock;
     private PostgreSqlContainer _pgVectorContainer;
     private IOptions<ListopiaOptions> _listopiaOptions;
     private IOptions<PgVectorOptions> _pgVectorOptions;
@@ -30,7 +30,7 @@ public class ListopiaParserRunnerTests
     {
         _listopiaServiceMock = new Mock<IListopiaService>();
         _hardcoverServiceMock = new Mock<IHardcoverService>();
-        _clipServiceMock = new Mock<IClipService>();
+        _embedServiceMock = new Mock<IEmbedService>();
         _loggerMock = new Mock<ILogger<ListopiaParserRunner>>();
         _listopiaOptionValues = new ListopiaOptions
         {
@@ -69,7 +69,7 @@ public class ListopiaParserRunnerTests
         _services.AddSingleton<IHostedService, ListopiaParserRunner>();
         _services.AddSingleton(_listopiaServiceMock.Object);
         _services.AddSingleton(_hardcoverServiceMock.Object);
-        _services.AddSingleton(_clipServiceMock.Object);
+        _services.AddSingleton(_embedServiceMock.Object);
         _services.AddSingleton(_listopiaOptions);
         _services.AddSingleton(_pgVectorOptions);
         _services.AddSingleton(_loggerMock.Object);
@@ -97,7 +97,7 @@ public class ListopiaParserRunnerTests
                 It.IsAny<CancellationToken>()
             ), 
             Times.Exactly(_listopiaOptionValues.Pages));
-        _clipServiceMock.Verify(x => x.GetCoverEmbeddings(
+        _embedServiceMock.Verify(x => x.GetCoverEmbeddings(
                 It.IsAny<List<Edition>>(),
                 It.IsAny<CancellationToken>()
             ), 

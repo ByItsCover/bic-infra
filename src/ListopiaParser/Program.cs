@@ -17,7 +17,6 @@ builder.Configuration
     .AddUserSecrets<Program>(true, true)
     .AddEnvironmentVariables();
 
-//builder.Services.AddPostgresVectorStore(connString);
 builder.Services.AddSingleton<NpgsqlDataSource>(sp =>
 {
     NpgsqlDataSourceBuilder dataSourceBuilder = new(connString);
@@ -33,11 +32,11 @@ builder.Services.AddPostgresVectorStore();
 
 builder.Services.Configure<ListopiaOptions>(builder.Configuration.GetSection("ListopiaOptions"));
 builder.Services.Configure<HardcoverOptions>(builder.Configuration.GetSection("HardcoverOptions"));
-builder.Services.Configure<ClipOptions>(builder.Configuration.GetSection("ClipOptions"));
+builder.Services.Configure<EmbedOptions>(builder.Configuration.GetSection("EmbedOptions"));
 builder.Services.Configure<PgVectorOptions>(builder.Configuration.GetSection("PgVectorOptions"));
 builder.Services.AddHttpClient<IListopiaService, ListopiaService>();
 builder.Services.AddHttpClient<IHardcoverService, HardcoverService>();
-builder.Services.AddHttpClient<IClipService, ClipService>();
+builder.Services.AddHttpClient<IEmbedService, EmbedService>();
 builder.Services.AddHostedService<ListopiaParserRunner>();
 
 var host = builder.Build();
