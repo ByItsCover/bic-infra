@@ -53,7 +53,7 @@ public class ListopiaParserRunner : BackgroundService
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Error: " + e.Message);
+                _logger.LogError(e, "Error: {Message}", e.Message);
             }
         }
 
@@ -66,7 +66,7 @@ public class ListopiaParserRunner : BackgroundService
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Error: " + e.Message);
+                _logger.LogError(e, "Error: {Message}", e.Message);
             }
         }
         
@@ -81,11 +81,11 @@ public class ListopiaParserRunner : BackgroundService
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Error: " + e.Message);
+                _logger.LogError(e, "Error: {Message}", e.Message);
             }
         }
         
-        _logger.LogInformation("Number of embeddings uploaded: " + embeddingsUploaded);
+        _logger.LogInformation("Number of embeddings uploaded: {Count}", embeddingsUploaded);
         _logger.LogInformation("Listopia Parser completed");
     }
 }

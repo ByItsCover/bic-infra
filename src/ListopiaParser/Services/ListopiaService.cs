@@ -26,7 +26,7 @@ public class ListopiaService : IListopiaService
     
     public async Task<List<string>> GetListopiaIsbns(int pageNumber, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Starting listopia parse page " + pageNumber);
+        _logger.LogInformation("Starting listopia parse page {PageNumber}", pageNumber);
         var request = new HttpRequestMessage(HttpMethod.Get, ToAbsolute(_options.ListopiaUrl, $"?page={pageNumber}"));
         var response = await _client.SendAsync(request, cancellationToken);
         response.EnsureSuccessStatusCode();
@@ -45,7 +45,7 @@ public class ListopiaService : IListopiaService
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Error: " + e.Message);
+                _logger.LogError(e, "Error: {Message}", e.Message);
             }
         }
         return isbnList;

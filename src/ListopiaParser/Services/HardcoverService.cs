@@ -61,7 +61,7 @@ public class HardcoverService : IHardcoverService
             throw new AggregateException(exceptions);
         }
         
-        _logger.LogInformation($"Retrieved {response.Data.Editions.Count} editions");
+        _logger.LogInformation("Retrieved {Count} editions", response.Data.Editions.Count);
         
         return response.Data.Editions;
     }
