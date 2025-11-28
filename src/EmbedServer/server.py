@@ -39,7 +39,7 @@ class EmbedServer(ls.LitAPI):
                 was_processed.append(True)
         
         print(f"Got {len(processed_images)} images")
-        return torch.cat(processed_images, dim=0), was_processed
+        return torch.cat(processed_images, dim=0) if processed_images else None, was_processed
     
     async def _get_image(self, url: str | None, session: ClientSession):
         try:
@@ -54,20 +54,23 @@ class EmbedServer(ls.LitAPI):
             print(f"Unable to process image url {url} due to {e.__class__}.")
             return None
     
-    def predict(self, processed_images: tuple[Tensor, List[bool]]):
+    def predict(self, processed_images: tuple[Tensor | None, List[bool]]):
         images_tensor, was_processed = processed_images
-        with torch.no_grad():
-            processed_embeddings = self.clip_model.encode_image(images_tensor).cpu().numpy()
-        
-        processed_embeddings_list = processed_embeddings.tolist()
-        image_embeddings = []
-        ind = 0
-        for processed in was_processed:
-            if processed:
-                image_embeddings.append(processed_embeddings_list[ind])
-                ind += 1
-            else:
-                image_embeddings.append(None)
+        if images_tensor is not None:
+            with torch.no_grad():
+                processed_embeddings = self.clip_model.encode_image(images_tensor).cpu().numpy()
+            
+            processed_embeddings_list = processed_embeddings.tolist()
+            image_embeddings = []
+            ind = 0
+            for processed in was_processed:
+                if processed:
+                    image_embeddings.append(processed_embeddings_list[ind])
+                    ind += 1
+                else:
+                    image_embeddings.append(None)
+        else:
+            image_embeddings = [None for _ in was_processed]
         
         return {
                 "image_embeddings": image_embeddings
