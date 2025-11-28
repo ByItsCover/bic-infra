@@ -8,7 +8,6 @@ import asyncio
 import aiohttp
 from aiohttp import ClientSession
 
-from typing import List
 from litserve import Request
 import litserve as ls
 
@@ -20,12 +19,12 @@ class EmbedServer(ls.LitAPI):
         self.clip_model, self.preprocess = clip.load(self.model_name, device=self.device)
     
     def decode_request(self, request: Request):
-        image_urls: List[str | None] = request["image_urls"]
+        image_urls: list[str | None] = request["image_urls"]
         images_tensor, was_processed = asyncio.run(self._retrieve_images(image_urls))
         
         return (images_tensor, was_processed)
     
-    async def _retrieve_images(self, urls: List[str | None]):
+    async def _retrieve_images(self, urls: list[str | None]):
         async with aiohttp.ClientSession() as session:
             ret = await asyncio.gather(*(self._get_image(url, session) for url in urls))
         
@@ -54,7 +53,7 @@ class EmbedServer(ls.LitAPI):
             print(f"Unable to process image url {url} due to {e.__class__}.")
             return None
     
-    def predict(self, processed_images: tuple[Tensor | None, List[bool]]):
+    def predict(self, processed_images: tuple[Tensor | None, list[bool]]):
         images_tensor, was_processed = processed_images
         if images_tensor is not None:
             with torch.no_grad():
