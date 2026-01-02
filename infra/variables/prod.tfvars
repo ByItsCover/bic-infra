@@ -1,10 +1,6 @@
 aws_region  = "us-east-2"
 aws_profile = "dev"
 
-tfe_organization      = "ByItsCover"
-tfe_workspace_name    = "By Its Cover Dev"
-tfe_workspace_project = "by-its-cover-dev"
-
 rds_cluster_id      = "covercluster"
 rds_database_name   = "coverdb"
 rds_master_username = "tester"
