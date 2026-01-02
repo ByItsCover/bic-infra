@@ -76,7 +76,7 @@ jobs:
 
       - name: Terraform Plan
         run: |
-          echo $AWS_ACCESS_KEY_ID
+          echo $AWS_REGION
           echo "Yuh"
           terraform plan -var-file=variables/prod.tfvars
 
