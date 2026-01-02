@@ -58,7 +58,7 @@ jobs:
             terraform-${{ runner.os }}-
 
       - name: Configure AWS Credentials for github actions
-        uses: aws-actions/configure-aws-credentials@v4.0.2
+        uses: aws-actions/configure-aws-credentials@v5.1.2
         with:
           audience: sts.amazonaws.com
           aws-region: ${{secrets.AWS_REGION}}
