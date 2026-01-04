@@ -3,6 +3,7 @@ terraform {
     organization = "ByItsCover"
 
     workspaces {
+      prefix = "bic-infra-"
     }
   }
 

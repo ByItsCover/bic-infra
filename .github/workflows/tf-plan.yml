@@ -19,8 +19,6 @@ jobs:
 
     env:
       ENVIRONMENT: prod
-      TF_CLOUD_PROJECT: ByItsCover_PROD
-      TF_WORKSPACE: bic-infra-prod
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -36,6 +34,9 @@ jobs:
       # Runs a set of terraform commands using the runners shell
       - name: Terraform Init
         run: terraform init
+
+      - name: Terraform Workspace Create | Select
+        run: terraform workspace select ${{ env.ENVIRONMENT }} || terraform workspace new ${{ env.ENVIRONMENT }}
 
       - name: Terraform Validate
         run: |
