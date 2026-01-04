@@ -34,7 +34,7 @@ jobs:
 
       # Runs a set of terraform commands using the runners shell
       - name: Terraform Init
-        run: terraform init -backend-config=${{ env.ENVIRONMENT }}.hcl
+        run: terraform init -backend-config=config/${{ env.ENVIRONMENT }}.hcl
 
 
       # - name: Terraform Workspace Create | Select
