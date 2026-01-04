@@ -1,10 +1,18 @@
 terraform {
-  cloud {
+  # cloud {
+  #   organization = "ByItsCover"
+
+  #   workspaces {
+  #     project = ""
+  #     name    = ""
+  #   }
+  # }
+  backend "remote" {
+    hostname = "app.terraform.io"
     organization = "ByItsCover"
 
     workspaces {
-      project = ""
-      name    = ""
+      prefix = "bic-infra-"
     }
   }
 
