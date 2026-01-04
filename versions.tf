@@ -3,6 +3,8 @@ terraform {
     organization = "ByItsCover"
 
     workspaces {
+      project = ""
+      name    = ""
     }
   }
 
