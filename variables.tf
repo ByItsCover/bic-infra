@@ -58,11 +58,6 @@ variable "rds_master_username" {
   description = "AWS RDS master user username"
 }
 
-variable "rds_master_password" {
-  type        = string
-  description = "AWS RDS master user password"
-}
-
 variable "rds_scaling_config" {
   type        = map(any)
   description = "AWS RDS scaling configuration"
