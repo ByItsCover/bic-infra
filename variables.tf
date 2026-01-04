@@ -13,16 +13,6 @@ variable "tfe_org_name" {
   default     = "ByItsCover"
 }
 
-variable "tfe_workspace_name" {
-  type        = string
-  description = "Terraform workspace name"
-}
-
-variable "tfe_workspace_project" {
-  type        = string
-  description = "Terraform workspace project name"
-}
-
 variable "tfc_aws_auth" {
   type        = bool
   description = "Terraform Cloud AWS Provider Auth"
@@ -31,14 +21,14 @@ variable "tfc_aws_auth" {
 
 variable "tfc_aws_plan_role" {
   type        = bool
-  ephemeral   = true
   description = "Terraform Cloud AWS Plan Role"
+  sensitive   = true
 }
 
 variable "tfc_aws_apply_role" {
   type        = bool
-  ephemeral   = true
   description = "Terraform Cloud AWS Apply Role"
+  sensitive   = true
 }
 
 # Aurora RDS
