@@ -36,7 +36,9 @@ jobs:
         run: terraform init
 
       - name: Terraform Workspace Create | Select
-        run: terraform workspace select ${{ env.ENVIRONMENT }} || terraform workspace new ${{ env.ENVIRONMENT }}
+        run: |
+          terraform workspace select bic-infra-${{ env.ENVIRONMENT }} \
+          || terraform workspace new bic-infra-${{ env.ENVIRONMENT }}
 
       - name: Terraform Validate
         run: |
