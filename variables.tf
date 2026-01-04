@@ -20,13 +20,13 @@ variable "tfc_aws_auth" {
 }
 
 variable "tfc_aws_plan_role" {
-  type        = bool
+  type        = string
   description = "Terraform Cloud AWS Plan Role"
   sensitive   = true
 }
 
 variable "tfc_aws_apply_role" {
-  type        = bool
+  type        = string
   description = "Terraform Cloud AWS Apply Role"
   sensitive   = true
 }
