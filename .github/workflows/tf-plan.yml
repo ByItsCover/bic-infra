@@ -19,8 +19,7 @@ jobs:
     environment: ByItsCover-Dev
 
     env:
-      variable-file: variables/prod.tfvars
-      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+      ENVIRONMENT: prod
 
     defaults:
       run:
@@ -35,7 +34,7 @@ jobs:
       - name: Hashicorp - Terraform setup
         uses: hashicorp/setup-terraform@v3.1.2
         with:
-          cli_config_credentials_token: ${{ env.TF_API_TOKEN }}
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       # Runs a set of terraform commands using the runners shell
       - name: Terraform Init
@@ -48,4 +47,8 @@ jobs:
         continue-on-error: false
 
       - name: Terraform Plan
-        run: terraform plan -var-file=${{ env.variable-file }}
+        run: |
+          terraform plan \
+            -var-file=variables/${{ env.ENVIRONMENT }}.tfvars \
+            -var="tfc_aws_plan_role=${{ secrets.TFC_AWS_PLAN_ROLE_ARN }}" \
+            -var="tfc_aws_apply_role=${{ secrets.TFC_AWS_APPLY_ROLE_ARN }}"
