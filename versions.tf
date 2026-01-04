@@ -11,9 +11,9 @@ terraform {
     hostname = "app.terraform.io"
     organization = "ByItsCover"
 
-    workspaces {
-      prefix = "bic-infra-"
-    }
+    # workspaces {
+    #   name = ""
+    # }
   }
 
   required_providers {
