@@ -1,20 +1,20 @@
 terraform {
-  # cloud {
-  #   organization = "ByItsCover"
-
-  #   workspaces {
-  #     project = ""
-  #     name    = ""
-  #   }
-  # }
-  backend "remote" {
-    hostname = "app.terraform.io"
+  cloud {
     organization = "ByItsCover"
 
     # workspaces {
-    #   name = ""
+    #   project = ""
+    #   name    = ""
     # }
   }
+  # backend "remote" {
+  #   hostname = "app.terraform.io"
+  #   organization = "ByItsCover"
+
+  #   # workspaces {
+  #   #   name = ""
+  #   # }
+  # }
 
   required_providers {
     aws = {
