@@ -2,19 +2,11 @@ terraform {
   cloud {
     organization = "ByItsCover"
 
-    # workspaces {
-    #   project = ""
-    #   name    = ""
-    # }
+    workspaces {
+      project = "ByItsCover_PROD"
+      name    = "bic-infra-prod"
+    }
   }
-  # backend "remote" {
-  #   hostname = "app.terraform.io"
-  #   organization = "ByItsCover"
-
-  #   # workspaces {
-  #   #   name = ""
-  #   # }
-  # }
 
   required_providers {
     aws = {
