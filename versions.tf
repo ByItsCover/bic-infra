@@ -1,10 +1,10 @@
 terraform {
   cloud {
-    organization = var.tfe_org_name
+    organization = "ByItsCover"
 
     workspaces {
-      project = var.tfe_workspace_project
-      name    = var.tfe_workspace_name
+      project = "ByItsCover_PROD"
+      name    = "bic-infra-prod"
     }
   }
 
