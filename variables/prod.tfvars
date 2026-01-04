@@ -1,6 +1,6 @@
-aws_region  = "us-east-2"
+aws_region = "us-east-2"
 
-tfe_org_name      = "ByItsCover"
+tfe_org_name          = "ByItsCover"
 tfe_workspace_project = "ByItsCover_PROD"
 tfe_workspace_name    = "bic-infra-prod"
 

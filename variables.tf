@@ -8,9 +8,9 @@ variable "aws_region" {
 # Terraform Cloud
 
 variable "tfe_org_name" {
-  type = string
+  type        = string
   description = "Terraform Cloud organization name"
-  default = "ByItsCover"
+  default     = "ByItsCover"
 }
 
 variable "tfe_workspace_name" {
@@ -24,20 +24,20 @@ variable "tfe_workspace_project" {
 }
 
 variable "tfc_aws_auth" {
-  type = bool
+  type        = bool
   description = "Terraform Cloud AWS Provider Auth"
-  default = true
+  default     = true
 }
 
 variable "tfc_aws_plan_role" {
-  type = bool
-  ephemeral = true
+  type        = bool
+  ephemeral   = true
   description = "Terraform Cloud AWS Plan Role"
 }
 
 variable "tfc_aws_apply_role" {
-  type = bool
-  ephemeral = true
+  type        = bool
+  ephemeral   = true
   description = "Terraform Cloud AWS Apply Role"
 }
 
