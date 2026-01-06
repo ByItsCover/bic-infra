@@ -1,3 +1,19 @@
+resource "random_password" "master" {
+  length           = 16
+  special          = true
+  override_special = "_!%^"
+}
+
+resource "aws_secretsmanager_secret" "password" {
+  name = "cover-db-password"
+}
+
+resource "aws_secretsmanager_secret_version" "password" {
+  secret_id     = aws_secretsmanager_secret.password.id
+  secret_string = random_password.master.result
+}
+
+
 resource "aws_rds_cluster" "covercluster" {
   cluster_identifier  = var.rds_cluster_id
   engine              = "aurora-postgresql"
@@ -5,7 +21,7 @@ resource "aws_rds_cluster" "covercluster" {
   engine_version      = "17.4"
   database_name       = var.rds_database_name
   master_username     = var.rds_master_username
-  master_password     = var.rds_master_password
+  master_password     = aws_secretsmanager_secret_version.password.secret_string
   storage_encrypted   = true
   skip_final_snapshot = true
   apply_immediately   = true

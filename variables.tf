@@ -1,3 +1,12 @@
+# General AWS
+
+variable "aws_region" {
+  type        = string
+  description = "AWS Region"
+}
+
+# Aurora RDS
+
 variable "rds_cluster_id" {
   type        = string
   description = "AWS RDS cluster identifier"
@@ -13,11 +22,6 @@ variable "rds_master_username" {
   description = "AWS RDS master user username"
 }
 
-variable "rds_master_password" {
-  type        = string
-  description = "AWS RDS master user password"
-}
-
 variable "rds_scaling_config" {
   type        = map(any)
   description = "AWS RDS scaling configuration"
@@ -26,14 +30,4 @@ variable "rds_scaling_config" {
     min_capacity             = 0.0
     seconds_until_auto_pause = 300
   }
-}
-
-variable "aws_region" {
-  type        = string
-  description = "AWS Region"
-}
-
-variable "aws_profile" {
-  type        = string
-  description = "AWS profile name"
 }
