@@ -1,0 +1,8 @@
+output "db_master_username" {
+  value = var.rds_master_username
+}
+
+output "db_master_password" {
+  value     = aws_secretsmanager_secret_version.password.secret_string
+  sensitive = true
+}
