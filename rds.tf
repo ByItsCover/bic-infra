@@ -21,7 +21,7 @@ resource "aws_rds_cluster" "covercluster" {
   engine_version      = "17.4"
   database_name       = var.rds_database_name
   master_username     = var.rds_master_username
-  master_password     = aws_secretsmanager_secret_version.password
+  master_password     = aws_secretsmanager_secret_version.password.secret_string
   storage_encrypted   = true
   skip_final_snapshot = true
   apply_immediately   = true
