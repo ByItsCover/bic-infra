@@ -12,5 +12,5 @@ output "db_master_password" {
 # ECR
 
 output "ecr_repo_url" {
-  value = aws_ecr_repository.repo.repository_url
+  value = aws_ecr_repository.cover_repository.repository_url
 }
