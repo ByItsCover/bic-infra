@@ -15,3 +15,9 @@ output "ecr_repo_url" {
   value     = aws_ecr_repository.cover_repository.repository_url
   sensitive = true
 }
+
+# EFS
+
+output "efs_sg_id" {
+  value = aws_security_group.efs.id
+}
