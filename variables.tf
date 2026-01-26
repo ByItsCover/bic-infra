@@ -31,10 +31,3 @@ variable "rds_scaling_config" {
     seconds_until_auto_pause = 300
   }
 }
-
-# Elastic Container Registry
-
-variable "ecr_repo_name" {
-  type        = string
-  description = "Elastic Container Registry Repository Name"
-}

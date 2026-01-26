@@ -10,7 +10,3 @@ rds_scaling_config = {
   min_capacity             = 0.0
   seconds_until_auto_pause = 300
 }
-
-# ECR
-
-ecr_repo_name = "cover-repository"
