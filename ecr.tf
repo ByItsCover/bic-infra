@@ -4,7 +4,7 @@ data "aws_ecr_lifecycle_policy_document" "expiry_policy" {
     description = "Keeping last 10 images"
 
     selection {
-      tag_status   = "untagged"
+      tag_status   = "any"
       count_type   = "imageCountMoreThan"
       count_number = 10
     }

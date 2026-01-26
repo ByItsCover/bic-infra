@@ -9,17 +9,6 @@ data "aws_iam_policy_document" "lambda_function_policy" {
       identifiers = ["lambda.amazonaws.com"]
     }
   }
-
-  statement {
-    actions = [
-      "logs:CreateLogStream",
-      "logs:PutLogEvents"
-    ]
-
-    resources = [
-      "arn:aws:logs:*:*:*",
-    ]
-  }
 }
 
 resource "aws_iam_role" "lambda_function_role" {
