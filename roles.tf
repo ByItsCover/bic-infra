@@ -1,18 +1,39 @@
-resource "aws_security_group" "batch" {
+# Lambda
 
-  name        = "batch_access_sg"
-  description = "Batch Access Group"
-  vpc_id      = data.aws_vpc.default.id
+data "aws_iam_policy_document" "lambda_function_policy" {
+  statement {
+    actions = ["sts:AssumeRole"]
 
-  egress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp"
-    cidr_blocks = [
-      data.aws_vpc.default.cidr_block
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+  }
+
+  statement {
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+
+    resources = [
+      "arn:aws:logs:*:*:*",
     ]
   }
 }
+
+resource "aws_iam_role" "lambda_function_role" {
+  name = "lambda_function_role"
+
+  assume_role_policy = data.aws_iam_policy_document.lambda_function_policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_function_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  role       = aws_iam_role.lambda_function_role.name
+}
+
+# Batch
 
 data "aws_iam_policy_document" "batch_service_policy" {
   statement {
@@ -35,6 +56,8 @@ resource "aws_iam_role_policy_attachment" "batch_service_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
   role       = aws_iam_role.batch_service_role.name
 }
+
+# ECS
 
 data "aws_iam_policy_document" "ecs_instance_policy" {
   statement {
