@@ -1,6 +1,6 @@
 data "aws_ecr_lifecycle_policy_document" "expiry_policy" {
   rule {
-    priority    = 1
+    priority    = 2
     description = "Keeping last 10 images"
 
     selection {
@@ -11,7 +11,7 @@ data "aws_ecr_lifecycle_policy_document" "expiry_policy" {
   }
 
   rule {
-    priority    = 2
+    priority    = 1
     description = "Expiring images older than 2 weeks"
 
     selection {
