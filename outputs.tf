@@ -16,8 +16,8 @@ output "ecr_repo_url" {
   sensitive = true
 }
 
-# EFS
+# Batch
 
-output "efs_sg_id" {
-  value = aws_security_group.efs.id
+output "batch_sg_id" {
+  value = aws_security_group.batch.id
 }
