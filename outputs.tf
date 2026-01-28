@@ -25,13 +25,13 @@ output "db_master_password" {
 
 # ECR
 
-output "embed_server_ecr_url" {
-  value     = aws_ecr_repository.embed_server.repository_url
+output "embed_server_ecr_name" {
+  value     = aws_ecr_repository.embed_server.name
   sensitive = true
 }
 
-output "listopia_parser_ecr_url" {
-  value     = aws_ecr_repository.listopia_parser.repository_url
+output "listopia_parser_ecr_name" {
+  value     = aws_ecr_repository.listopia_parser.name
   sensitive = true
 }
 
