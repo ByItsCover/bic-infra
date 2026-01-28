@@ -27,12 +27,10 @@ output "db_master_password" {
 
 output "embed_server_ecr_name" {
   value     = aws_ecr_repository.embed_server.name
-  sensitive = true
 }
 
 output "listopia_parser_ecr_name" {
   value     = aws_ecr_repository.listopia_parser.name
-  sensitive = true
 }
 
 # Batch
