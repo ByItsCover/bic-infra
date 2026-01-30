@@ -5,11 +5,11 @@ resource "aws_security_group" "batch" {
   vpc_id      = data.aws_vpc.default.id
 
   egress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp"
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
     cidr_blocks = [
-      data.aws_vpc.default.cidr_block
+      "0.0.0.0/0"
     ]
   }
 }
