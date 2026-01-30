@@ -48,7 +48,7 @@ resource "aws_iam_role_policy_attachment" "batch_service_policy" {
 
 # ECS
 
-data "aws_iam_policy_document" "ecs_instance_policy" {
+data "aws_iam_policy_document" "ecs_policy" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -59,18 +59,18 @@ data "aws_iam_policy_document" "ecs_instance_policy" {
   }
 }
 
-resource "aws_iam_role" "ecs_instance_role" {
-  name = "ecs_instance_role"
+resource "aws_iam_role" "ecs_role" {
+  name = "ecs_role"
 
-  assume_role_policy = data.aws_iam_policy_document.ecs_instance_policy.json
+  assume_role_policy = data.aws_iam_policy_document.ecs_policy.json
 }
 
-resource "aws_iam_role_policy_attachment" "ecs_instance_policy" {
+resource "aws_iam_role_policy_attachment" "ecs_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
-  role       = aws_iam_role.ecs_instance_role.name
+  role       = aws_iam_role.ecs_role.name
 }
 
 resource "aws_iam_instance_profile" "ecs_instance_role" {
   name = "ecs_instance_role"
-  role = aws_iam_role.ecs_instance_role.name
+  role = aws_iam_role.ecs_role.name
 }

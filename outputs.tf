@@ -9,7 +9,7 @@ output "batch_service_role_arn" {
 }
 
 output "ecs_instance_role_arn" {
-  value = aws_iam_role.ecs_instance_role.arn
+  value = aws_iam_instance_profile.ecs_instance_role.arn
 }
 
 # RDS
