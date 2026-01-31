@@ -14,6 +14,10 @@ output "ecs_instance_role_arn" {
 
 # RDS
 
+output "db_endpoint" {
+  value = aws_rds_cluster.covercluster.endpoint
+}
+
 output "db_master_username" {
   value = var.rds_master_username
 }
@@ -26,11 +30,11 @@ output "db_master_password" {
 # ECR
 
 output "embed_server_ecr_name" {
-  value     = aws_ecr_repository.embed_server.name
+  value = aws_ecr_repository.embed_server.name
 }
 
 output "listopia_parser_ecr_name" {
-  value     = aws_ecr_repository.listopia_parser.name
+  value = aws_ecr_repository.listopia_parser.name
 }
 
 # Batch

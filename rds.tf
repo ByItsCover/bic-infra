@@ -15,16 +15,17 @@ resource "aws_secretsmanager_secret_version" "password" {
 
 
 resource "aws_rds_cluster" "covercluster" {
-  cluster_identifier  = var.rds_cluster_id
-  engine              = "aurora-postgresql"
-  engine_mode         = "provisioned"
-  engine_version      = "17.4"
-  database_name       = var.rds_database_name
-  master_username     = var.rds_master_username
-  master_password     = aws_secretsmanager_secret_version.password.secret_string
-  storage_encrypted   = true
-  skip_final_snapshot = true
-  apply_immediately   = true
+  cluster_identifier     = var.rds_cluster_id
+  engine                 = "aurora-postgresql"
+  engine_mode            = "provisioned"
+  engine_version         = "17.4"
+  database_name          = var.rds_database_name
+  master_username        = var.rds_master_username
+  master_password        = aws_secretsmanager_secret_version.password.secret_string
+  storage_encrypted      = true
+  skip_final_snapshot    = true
+  apply_immediately      = true
+  vpc_security_group_ids = [aws_security_group.rds.id]
 
   serverlessv2_scaling_configuration {
     max_capacity             = var.rds_scaling_config.max_capacity
