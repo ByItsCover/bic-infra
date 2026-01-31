@@ -32,6 +32,7 @@ resource "aws_security_group" "batch" {
   vpc_id      = data.aws_vpc.default.id
 }
 
+/*
 resource "aws_vpc_security_group_egress_rule" "batch_egress" {
   security_group_id = aws_security_group.batch.id
 
@@ -40,3 +41,4 @@ resource "aws_vpc_security_group_egress_rule" "batch_egress" {
   ip_protocol = "-1"
   cidr_ipv4   = "0.0.0.0/0"
 }
+*/
