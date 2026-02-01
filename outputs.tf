@@ -42,3 +42,9 @@ output "listopia_parser_ecr_name" {
 output "batch_sg_id" {
   value = aws_security_group.batch.id
 }
+
+# API Gateway
+
+output "api_gw_id" {
+  value = aws_apigatewayv2_api.embed_api.id
+}
