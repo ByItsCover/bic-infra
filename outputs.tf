@@ -48,3 +48,7 @@ output "batch_sg_id" {
 output "api_gw_id" {
   value = aws_apigatewayv2_api.embed_api.id
 }
+
+output "api_gw_arn" {
+  value = aws_apigatewayv2_api.embed_api.execution_arn
+}
