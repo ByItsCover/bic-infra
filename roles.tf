@@ -59,10 +59,25 @@ data "aws_iam_policy_document" "ecs_policy" {
   }
 }
 
-resource "aws_iam_role" "ecs_role" {
-  name = "ecs_role"
+data "aws_iam_policy_document" "ecs_api_access_policy" {
+  statement {
+    actions = ["execute-api:Invoke"]
 
+    resources = [
+      "${aws_apigatewayv2_api.embed_api.execution_arn}/*",
+    ]
+  }
+}
+
+resource "aws_iam_role" "ecs_role" {
+  name               = "ecs_role"
   assume_role_policy = data.aws_iam_policy_document.ecs_policy.json
+}
+
+resource "aws_iam_policy" "ecs_api_access_policy" {
+  name   = "ecs_api_access_policy"
+  role   = aws_iam_role.ecs_role.name
+  policy = data.aws_iam_policy_document.ecs_api_access_policy.json
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_policy" {
