@@ -85,6 +85,11 @@ resource "aws_iam_role_policy_attachment" "ecs_policy" {
   role       = aws_iam_role.ecs_role.name
 }
 
+resource "aws_iam_role_policy_attachment" "ecs_secrets_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AWSSecretsManagerClientReadOnlyAccess"
+  role       = aws_iam_role.ecs_role.name
+}
+
 resource "aws_iam_role_policy_attachment" "ecs_ssm_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
   role       = aws_iam_role.ecs_role.name
