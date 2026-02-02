@@ -25,6 +25,7 @@ resource "aws_rds_cluster" "covercluster" {
   storage_encrypted      = true
   skip_final_snapshot    = true
   apply_immediately      = true
+  enable_http_endpoint   = true
   vpc_security_group_ids = [aws_security_group.rds.id]
 
   serverlessv2_scaling_configuration {
