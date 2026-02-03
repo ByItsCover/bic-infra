@@ -4,7 +4,7 @@ data "aws_ecr_lifecycle_policy_document" "expiry_policy" {
     description = "Keeping latest image"
 
     selection {
-      tag_status   = "tagged"
+      tag_status      = "tagged"
       tag_prefix_list = ["latest"]
       count_type      = "imageCountMoreThan"
       count_number    = 1
