@@ -1,21 +1,33 @@
 data "aws_ecr_lifecycle_policy_document" "expiry_policy" {
   rule {
-    priority    = 2
-    description = "Keeping last 10 images"
+    priority    = 1
+    description = "Keeping latest image"
 
     selection {
-      tag_status   = "any"
-      count_type   = "imageCountMoreThan"
-      count_number = 10
+      tag_status      = "tagged"
+      tag_prefix_list = ["latest"]
+      count_type      = "imageCountMoreThan"
+      count_number    = 1
     }
   }
 
   rule {
-    priority    = 1
-    description = "Expiring images older than 2 weeks"
+    priority    = 2
+    description = "Keeping last 9 images"
 
     selection {
       tag_status   = "untagged"
+      count_type   = "imageCountMoreThan"
+      count_number = 9
+    }
+  }
+
+  rule {
+    priority    = 3
+    description = "Expiring images older than 2 weeks"
+
+    selection {
+      tag_status   = "any"
       count_type   = "sinceImagePushed"
       count_unit   = "days"
       count_number = 14
