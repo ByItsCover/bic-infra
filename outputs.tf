@@ -56,3 +56,9 @@ output "api_gw_id" {
 output "api_gw_arn" {
   value = aws_apigatewayv2_api.embed_api.execution_arn
 }
+
+# SQS
+
+output "sqs_arn" {
+  value = aws_sqs_queue.embed_queue.arn
+}
