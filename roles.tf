@@ -22,6 +22,11 @@ resource "aws_iam_role_policy_attachment" "lambda_function_policy" {
   role       = aws_iam_role.lambda_function_role.name
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_sqs_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
+  role       = aws_iam_role.lambda_function_role.name
+}
+
 # Batch
 
 data "aws_iam_policy_document" "batch_service_policy" {
