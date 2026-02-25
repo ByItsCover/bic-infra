@@ -31,3 +31,10 @@ variable "rds_scaling_config" {
     seconds_until_auto_pause = 300
   }
 }
+
+# S3
+
+variable "s3_bucket_name" {
+  type        = string
+  description = "AWS S3 bucket name"
+}

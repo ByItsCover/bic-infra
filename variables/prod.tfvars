@@ -10,3 +10,6 @@ rds_scaling_config = {
   min_capacity             = 0.0
   seconds_until_auto_pause = 300
 }
+
+# S3
+s3_bucket_name = "cover-bucket"
