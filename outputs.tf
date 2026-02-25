@@ -69,3 +69,7 @@ output "api_gw_arn" {
 output "sqs_arn" {
   value = aws_sqs_queue.embed_queue.arn
 }
+
+output "sqs_url" {
+  value = aws_sqs_queue.embed_queue.url
+}
