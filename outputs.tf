@@ -31,6 +31,13 @@ output "db_master_password" {
   sensitive = true
 }
 
+# S3
+
+output "object_s3_uri" {
+  value = "s3://${aws_s3_bucket.cover_bucket.bucket}"
+}
+
+
 # ECR
 
 output "embed_server_ecr_name" {
