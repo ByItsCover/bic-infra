@@ -33,9 +33,11 @@ output "db_master_password" {
 
 # S3
 
-output "s3_uri" {
-  value = "s3://${aws_s3_bucket.cover_bucket.bucket}"
+/*
+output "s3_db_uri" {
+  value = "s3://${aws_s3_bucket.cover_bucket.bucket}/${aws_s3_object.coverdb.key}"
 }
+*/
 
 
 # ECR
