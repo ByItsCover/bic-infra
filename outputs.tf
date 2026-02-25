@@ -33,7 +33,7 @@ output "db_master_password" {
 
 # S3
 
-output "object_s3_uri" {
+output "s3_uri" {
   value = "s3://${aws_s3_bucket.cover_bucket.bucket}"
 }
 
