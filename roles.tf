@@ -67,9 +67,7 @@ data "aws_iam_policy_document" "ecs_policy" {
       identifiers = ["ec2.amazonaws.com", "ecs-tasks.amazonaws.com"]
     }
   }
-}
 
-data "aws_iam_policy_document" "ecs_api_access_policy" {
   statement {
     actions = ["execute-api:Invoke"]
 
@@ -77,18 +75,33 @@ data "aws_iam_policy_document" "ecs_api_access_policy" {
       "${aws_apigatewayv2_api.embed_api.execution_arn}/*",
     ]
   }
+
+  statement {
+    actions = ["sqs:SendMessage"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["sns.amazonaws.com"]
+    }
+
+    resources = [aws_sqs_queue.embed_queue.arn]
+  }
 }
+
+# data "aws_iam_policy_document" "ecs_api_access_policy" {
+  
+# }
 
 resource "aws_iam_role" "ecs_role" {
   name               = "ecs_role"
   assume_role_policy = data.aws_iam_policy_document.ecs_policy.json
 }
 
-resource "aws_iam_role_policy" "ecs_api_access_policy" {
-  name   = "ecs_api_access_policy"
-  role   = aws_iam_role.ecs_role.name
-  policy = data.aws_iam_policy_document.ecs_api_access_policy.json
-}
+# resource "aws_iam_role_policy" "ecs_api_access_policy" {
+#   name   = "ecs_api_access_policy"
+#   role   = aws_iam_role.ecs_role.name
+#   policy = data.aws_iam_policy_document.ecs_api_access_policy.json
+# }
 
 resource "aws_iam_role_policy_attachment" "ecs_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
