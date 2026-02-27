@@ -67,7 +67,9 @@ data "aws_iam_policy_document" "ecs_policy" {
       identifiers = ["ec2.amazonaws.com", "ecs-tasks.amazonaws.com"]
     }
   }
+}
 
+data "aws_iam_policy_document" "sqs_policy" {
   statement {
     actions = ["sqs:SendMessage"]
 
@@ -83,6 +85,12 @@ data "aws_iam_policy_document" "ecs_policy" {
 resource "aws_iam_role" "ecs_role" {
   name               = "ecs_role"
   assume_role_policy = data.aws_iam_policy_document.ecs_policy.json
+}
+
+resource "aws_iam_role_policy" "ecs_sqs_policy" {
+  name   = "ecs_sqs_policy"
+  role   = aws_iam_role.ecs_role.name
+  policy = data.aws_iam_policy_document.sqs_policy.json
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_policy" {
