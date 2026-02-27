@@ -73,11 +73,6 @@ data "aws_iam_policy_document" "sqs_policy" {
   statement {
     actions = ["sqs:SendMessage"]
 
-    principals {
-      type        = "Service"
-      identifiers = ["sns.amazonaws.com"]
-    }
-
     resources = [aws_sqs_queue.embed_queue.arn]
   }
 }
