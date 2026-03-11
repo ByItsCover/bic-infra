@@ -15,22 +15,6 @@ output "ecs_instance_role_arn" {
 output "ecs_execution_role_arn" {
   value = aws_iam_role.ecs_role.arn
 }
-
-# RDS
-
-output "db_endpoint" {
-  value = aws_rds_cluster.covercluster.endpoint
-}
-
-output "db_master_username" {
-  value = var.rds_master_username
-}
-
-output "db_master_password" {
-  value     = aws_secretsmanager_secret_version.password.secret_string
-  sensitive = true
-}
-
 # S3
 
 output "s3_db_uri" {
