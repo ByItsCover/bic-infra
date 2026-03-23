@@ -32,6 +32,10 @@ output "listopia_parser_ecr_name" {
   value = aws_ecr_repository.listopia_parser.name
 }
 
+output "library_search_ecr_name" {
+  value = aws_ecr_repository.library_search.name
+}
+
 # Batch
 
 output "batch_sg_id" {
@@ -41,11 +45,11 @@ output "batch_sg_id" {
 # API Gateway
 
 output "api_gw_id" {
-  value = aws_apigatewayv2_api.embed_api.id
+  value = aws_apigatewayv2_api.search_api.id
 }
 
 output "api_gw_arn" {
-  value = aws_apigatewayv2_api.embed_api.execution_arn
+  value = aws_apigatewayv2_api.search_api.execution_arn
 }
 
 # SQS

@@ -1,4 +1,4 @@
-resource "aws_apigatewayv2_api" "embed_api" {
-  name          = "embed-api"
+resource "aws_apigatewayv2_api" "search_api" {
+  name          = "search-api"
   protocol_type = "HTTP"
 }
