@@ -54,3 +54,25 @@ resource "aws_ecr_lifecycle_policy" "listopia_parser_policy" {
 
   policy = data.aws_ecr_lifecycle_policy_document.expiry_policy.json
 }
+
+# Library Search
+
+resource "aws_ecr_repository" "library_search" {
+  name                 = "library-search"
+  image_tag_mutability = "IMMUTABLE_WITH_EXCLUSION"
+
+  image_tag_mutability_exclusion_filter {
+    filter      = "latest*"
+    filter_type = "WILDCARD"
+  }
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+resource "aws_ecr_lifecycle_policy" "library_search_policy" {
+  repository = aws_ecr_repository.library_search.name
+
+  policy = data.aws_ecr_lifecycle_policy_document.expiry_policy.json
+}
