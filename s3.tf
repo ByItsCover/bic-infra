@@ -1,6 +1,5 @@
 # BIC-Site
 
-/*
 resource "aws_s3_bucket" "site_bucket" {
   bucket        = var.site_bucket_name
   force_destroy = true
@@ -22,7 +21,6 @@ resource "aws_s3_bucket_public_access_block" "site_bucket" {
   ignore_public_acls      = false
   restrict_public_buckets = false
 }
-*/
 
 # Vector DB
 
