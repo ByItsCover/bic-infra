@@ -1,3 +1,23 @@
+# S3 Site
+
+data "aws_iam_policy_document" "s3_full_access_policy" {
+  statement {
+    actions = ["s3:GetObject"]
+
+    resources = ["${aws_s3_bucket.site_bucket.arn}/*"]
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "s3_allow_full_access_policy" {
+  bucket = aws_s3_bucket.site_bucket.id
+  policy = data.aws_iam_policy_document.s3_full_access_policy.json
+}
+
 # Lambda
 
 data "aws_iam_policy_document" "lambda_function_policy" {
