@@ -1,5 +1,6 @@
 # S3 Site
 
+/*
 data "aws_iam_policy_document" "s3_full_access_policy" {
   statement {
     actions = ["s3:GetObject"]
@@ -21,6 +22,7 @@ resource "aws_s3_bucket_policy" "s3_allow_full_access_policy" {
     aws_s3_bucket_public_access_block.site_bucket
   ]
 }
+*/
 
 # Lambda
 
