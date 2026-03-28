@@ -7,12 +7,23 @@ variable "aws_region" {
 
 # S3
 
-variable "s3_bucket_name" {
+variable "site_bucket_name" {
   type        = string
-  description = "AWS S3 bucket name"
+  description = "AWS S3 BIC Site bucket name"
 }
 
-variable "db_folder_name" {
+variable "site_bucket_index_doc" {
   type        = string
-  description = "AWS S3 db folder name"
+  description = "Index document file name within site S3 bucket"
+  default     = "index.html"
+}
+
+variable "cover_bucket_name" {
+  type        = string
+  description = "AWS S3 Cover bucket name"
+}
+
+variable "cover_db_folder_name" {
+  type        = string
+  description = "AWS S3 Cover DB folder name"
 }
