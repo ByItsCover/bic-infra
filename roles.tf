@@ -7,8 +7,8 @@ data "aws_iam_policy_document" "s3_full_access_policy" {
     resources = ["${aws_s3_bucket.site_bucket.arn}/*"]
 
     principals {
-      type        = "*"
-      identifiers = ["*"]
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
     }
   }
 }

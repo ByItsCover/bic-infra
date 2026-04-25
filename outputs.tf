@@ -21,6 +21,10 @@ output "s3_site_bucket_id" {
   value = aws_s3_bucket.site_bucket.id
 }
 
+output "s3_site_bucket_regional_domain" {
+  value = aws_s3_bucket.site_bucket.bucket_regional_domain_name
+}
+
 output "s3_db_uri" {
   value = "s3://${aws_s3_bucket.cover_bucket.bucket}/${aws_s3_object.coverdb.key}"
 }
