@@ -27,3 +27,10 @@ variable "cover_db_folder_name" {
   type        = string
   description = "AWS S3 Cover DB folder name"
 }
+
+# Website
+
+variable "domain_name" {
+  type        = string
+  description = "Domain name for site"
+}
