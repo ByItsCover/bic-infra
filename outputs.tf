@@ -29,6 +29,19 @@ output "s3_db_uri" {
   value = "s3://${aws_s3_bucket.cover_bucket.bucket}/${aws_s3_object.coverdb.key}"
 }
 
+# CloudFront
+
+output "cf_access_control_id" {
+  value = aws_cloudfront_origin_access_control.current.id
+}
+
+output "cf_request_policy_id" {
+  value = aws_cloudfront_origin_request_policy.cdn.id
+}
+
+output "cf_cache_policy_id" {
+  value = aws_cloudfront_cache_policy.cdn.id
+}
 
 # ECR
 
