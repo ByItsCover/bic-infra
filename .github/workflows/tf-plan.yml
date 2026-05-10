@@ -16,6 +16,8 @@ jobs:
     # The type of runner that the job will run on
     name: Terraform plan
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     env:
       ENVIRONMENT: prod
@@ -42,6 +44,14 @@ jobs:
           terraform fmt -recursive
           terraform validate
         continue-on-error: false
+
+      - name: Render Terraform Docs
+        uses: terraform-docs/gh-actions@v1.4.1
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
 
       - name: Terraform Plan
         run: terraform plan -var-file=variables/${{ env.ENVIRONMENT }}.tfvars
