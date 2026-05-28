@@ -82,3 +82,9 @@ output "sqs_arn" {
 output "sqs_url" {
   value = aws_sqs_queue.embed_queue.url
 }
+
+# APIs
+
+output "hardcover_secret_arn" {
+  value = aws_secretsmanager_secret_version.hardcover_key.secret_arn
+}

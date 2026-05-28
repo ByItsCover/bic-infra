@@ -34,3 +34,11 @@ variable "domain_name" {
   type        = string
   description = "Domain name for site"
 }
+
+# APIs
+
+variable "hardcover_api_key" {
+  type        = string
+  description = "The Hardcover API Key"
+  sensitive   = true
+}
