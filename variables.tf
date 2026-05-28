@@ -38,9 +38,9 @@ variable "domain_name" {
 # APIs
 
 variable "hardcover_key_name" {
-  type = string
+  type        = string
   description = "Name of the HardCover key secret"
-  default = "hardcover-key"
+  default     = "hardcover-key"
 }
 
 variable "hardcover_api_key" {
