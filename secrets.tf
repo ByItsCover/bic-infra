@@ -1,7 +1,7 @@
 # HardCover
 
 resource "aws_secretsmanager_secret" "hardcover_key" {
-  name = "hardcover-key"
+  name = var.hardcover_key_name
 }
 
 resource "aws_secretsmanager_secret_version" "hardcover_key" {
