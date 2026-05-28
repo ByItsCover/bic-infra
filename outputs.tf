@@ -86,5 +86,5 @@ output "sqs_url" {
 # APIs
 
 output "hardcover_secret_arn" {
-  value = aws_secretsmanager_secret_version.hardcover_key.arn
+  value = aws_secretsmanager_secret_version.hardcover_key.secret_arn
 }
