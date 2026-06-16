@@ -83,6 +83,8 @@ No modules.
 | <a name="input_hardcover_key_name"></a> [hardcover\_key\_name](#input\_hardcover\_key\_name) | Name of the HardCover key secret | `string` | `"hardcover-key"` | no |
 | <a name="input_site_bucket_index_doc"></a> [site\_bucket\_index\_doc](#input\_site\_bucket\_index\_doc) | Index document file name within site S3 bucket | `string` | `"index.html"` | no |
 | <a name="input_site_bucket_name"></a> [site\_bucket\_name](#input\_site\_bucket\_name) | AWS S3 BIC Site bucket name | `string` | n/a | yes |
+| <a name="input_sqs_deadletter_retention"></a> [sqs\_deadletter\_retention](#input\_sqs\_deadletter\_retention) | SQS deadletter queue message retention in seconds | `number` | `345600` | no |
+| <a name="input_sqs_visibility_timeout"></a> [sqs\_visibility\_timeout](#input\_sqs\_visibility\_timeout) | SQS message timeout in seconds | `number` | `180` | no |
 
 ## Outputs
 

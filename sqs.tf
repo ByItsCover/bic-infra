@@ -1,5 +1,5 @@
 resource "aws_sqs_queue" "embed_queue" {
-  name = "embed-queue"
+  name                       = "embed-queue"
   visibility_timeout_seconds = var.sqs_visibility_timeout
 
   redrive_policy = jsonencode({
@@ -9,7 +9,7 @@ resource "aws_sqs_queue" "embed_queue" {
 }
 
 resource "aws_sqs_queue" "embed_queue_deadletter" {
-  name = "embed-deadletter-queue"
+  name                      = "embed-deadletter-queue"
   message_retention_seconds = var.sqs_deadletter_retention
 }
 
