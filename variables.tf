@@ -28,6 +28,20 @@ variable "cover_db_folder_name" {
   description = "AWS S3 Cover DB folder name"
 }
 
+# SQS
+
+variable "sqs_visibility_timeout" {
+  type        = number
+  description = "SQS message timeout in seconds"
+  default     = 180
+}
+
+variable "sqs_deadletter_retention" {
+  type        = number
+  description = "SQS deadletter queue message retention in seconds"
+  default     = 345600
+}
+
 # Website
 
 variable "domain_name" {
