@@ -14,7 +14,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.50.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.53.0 |
 
 ## Modules
 
@@ -28,6 +28,7 @@ No modules.
 | [aws_cloudfront_cache_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_cache_policy) | resource |
 | [aws_cloudfront_origin_access_control.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control) | resource |
 | [aws_cloudfront_origin_request_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_request_policy) | resource |
+| [aws_cognito_user_pool.auth_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool) | resource |
 | [aws_ecr_lifecycle_policy.embed_server_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.library_search_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.listopia_parser_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
@@ -79,8 +80,10 @@ No modules.
 | <a name="input_cover_bucket_name"></a> [cover\_bucket\_name](#input\_cover\_bucket\_name) | AWS S3 Cover bucket name | `string` | n/a | yes |
 | <a name="input_cover_db_folder_name"></a> [cover\_db\_folder\_name](#input\_cover\_db\_folder\_name) | AWS S3 Cover DB folder name | `string` | n/a | yes |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Domain name for site | `string` | n/a | yes |
+| <a name="input_email_req"></a> [email\_req](#input\_email\_req) | Requirements for site user emails | <pre>object({<br/>    max_length = number<br/>    min_length = number<br/>  })</pre> | <pre>{<br/>  "max_length": 254,<br/>  "min_length": 6<br/>}</pre> | no |
 | <a name="input_hardcover_api_key"></a> [hardcover\_api\_key](#input\_hardcover\_api\_key) | The HardCover API Key | `string` | n/a | yes |
 | <a name="input_hardcover_key_name"></a> [hardcover\_key\_name](#input\_hardcover\_key\_name) | Name of the HardCover key secret | `string` | `"hardcover-key"` | no |
+| <a name="input_password_req"></a> [password\_req](#input\_password\_req) | Requirements for site user passwords | <pre>object({<br/>    min_length  = number<br/>    req_upper   = bool<br/>    req_lower   = bool<br/>    req_numbers = bool<br/>    req_symbols = bool<br/>  })</pre> | n/a | yes |
 | <a name="input_site_bucket_index_doc"></a> [site\_bucket\_index\_doc](#input\_site\_bucket\_index\_doc) | Index document file name within site S3 bucket | `string` | `"index.html"` | no |
 | <a name="input_site_bucket_name"></a> [site\_bucket\_name](#input\_site\_bucket\_name) | AWS S3 BIC Site bucket name | `string` | n/a | yes |
 | <a name="input_sqs_deadletter_retention"></a> [sqs\_deadletter\_retention](#input\_sqs\_deadletter\_retention) | SQS deadletter queue message retention in seconds | `number` | `345600` | no |
@@ -92,6 +95,7 @@ No modules.
 |------|-------------|
 | <a name="output_api_gw_arn"></a> [api\_gw\_arn](#output\_api\_gw\_arn) | n/a |
 | <a name="output_api_gw_id"></a> [api\_gw\_id](#output\_api\_gw\_id) | n/a |
+| <a name="output_auth_user_pool_id"></a> [auth\_user\_pool\_id](#output\_auth\_user\_pool\_id) | n/a |
 | <a name="output_batch_service_role_arn"></a> [batch\_service\_role\_arn](#output\_batch\_service\_role\_arn) | n/a |
 | <a name="output_batch_sg_id"></a> [batch\_sg\_id](#output\_batch\_sg\_id) | n/a |
 | <a name="output_cf_access_control_id"></a> [cf\_access\_control\_id](#output\_cf\_access\_control\_id) | n/a |

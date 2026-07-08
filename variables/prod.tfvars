@@ -14,8 +14,8 @@ sqs_deadletter_retention = 604800 # 1 week
 domain_name = "by-its-cover.com"
 password_req = {
   minimum_len = 8
-  req_upper = true
-  req_lower = true
+  req_upper   = true
+  req_lower   = true
   req_numbers = true
   req_symbols = false
 }

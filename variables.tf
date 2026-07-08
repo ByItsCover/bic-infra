@@ -51,9 +51,9 @@ variable "domain_name" {
 
 variable "password_req" {
   type = object({
-    min_length = number
-    req_upper = bool
-    req_lower = bool
+    min_length  = number
+    req_upper   = bool
+    req_lower   = bool
     req_numbers = bool
     req_symbols = bool
   })
