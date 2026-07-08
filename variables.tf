@@ -49,6 +49,29 @@ variable "domain_name" {
   description = "Domain name for site"
 }
 
+variable "password_req" {
+  type = object({
+    min_length = number
+    req_upper = bool
+    req_lower = bool
+    req_numbers = bool
+    req_symbols = bool
+  })
+  description = "Requirements for site user passwords"
+}
+
+variable "email_req" {
+  description = "Requirements for site user emails"
+  type = object({
+    max_length = number
+    min_length = number
+  })
+  default = {
+    max_length = 254
+    min_length = 6
+  }
+}
+
 # APIs
 
 variable "hardcover_key_name" {

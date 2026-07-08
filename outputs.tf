@@ -92,3 +92,9 @@ output "hardcover_secret_arn" {
 output "hardcover_secret_name" {
   value = aws_secretsmanager_secret.hardcover_key.name
 }
+
+# Cognito
+
+output "auth_user_pool_id" {
+  value = aws_cognito_user_pool.auth_pool.id
+}
