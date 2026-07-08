@@ -6,8 +6,8 @@ resource "aws_cloudfront_origin_access_control" "current" {
 }
 
 resource "aws_cloudfront_origin_request_policy" "cdn" {
-  name    = "Custom-CORS-Policy"
-  comment = "Policy for custom origin with CORS"
+  name    = "Custom-CORS-Request-Policy"
+  comment = "Policy for custom origin request with CORS"
   cookies_config {
     cookie_behavior = "none"
   }
@@ -19,6 +19,27 @@ resource "aws_cloudfront_origin_request_policy" "cdn" {
   }
   query_strings_config {
     query_string_behavior = "none"
+  }
+}
+
+resource "aws_cloudfront_response_headers_policy" "cdn" {
+  name    = "Custom-CORS-Response-Policy"
+  comment = "Policy for custom response headers with CORS"
+
+  cors_config {
+    access_control_allow_credentials = false
+
+    access_control_allow_headers {
+      items = ["content-type"]
+    }
+    access_control_allow_methods {
+      items = ["GET", "HEAD", "OPTIONS"]
+    }
+    access_control_allow_origins {
+      items = ["https://${var.domain_name}", "https://www.${var.domain_name}"]
+    }
+
+    origin_override = true
   }
 }
 

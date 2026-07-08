@@ -39,6 +39,10 @@ output "cf_request_policy_id" {
   value = aws_cloudfront_origin_request_policy.cdn.id
 }
 
+output "cf_response_policy_id" {
+  value = aws_cloudfront_response_headers_policy.cdn.id
+}
+
 output "cf_cache_policy_id" {
   value = aws_cloudfront_cache_policy.cdn.id
 }
