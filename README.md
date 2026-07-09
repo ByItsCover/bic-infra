@@ -81,7 +81,7 @@ No modules.
 | <a name="input_cover_bucket_name"></a> [cover\_bucket\_name](#input\_cover\_bucket\_name) | AWS S3 Cover bucket name | `string` | n/a | yes |
 | <a name="input_cover_db_folder_name"></a> [cover\_db\_folder\_name](#input\_cover\_db\_folder\_name) | AWS S3 Cover DB folder name | `string` | n/a | yes |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Domain name for site | `string` | n/a | yes |
-| <a name="input_email_req"></a> [email\_req](#input\_email\_req) | Requirements for site user emails | <pre>object({<br/>    max_length = number<br/>    min_length = number<br/>  })</pre> | <pre>{<br/>  "max_length": 254,<br/>  "min_length": 6<br/>}</pre> | no |
+| <a name="input_email_req"></a> [email\_req](#input\_email\_req) | Requirements for site user emails | <pre>object({<br/>    min_length = number<br/>    max_length = number<br/>  })</pre> | <pre>{<br/>  "max_length": 254,<br/>  "min_length": 6<br/>}</pre> | no |
 | <a name="input_hardcover_api_key"></a> [hardcover\_api\_key](#input\_hardcover\_api\_key) | The HardCover API Key | `string` | n/a | yes |
 | <a name="input_hardcover_key_name"></a> [hardcover\_key\_name](#input\_hardcover\_key\_name) | Name of the HardCover key secret | `string` | `"hardcover-key"` | no |
 | <a name="input_password_req"></a> [password\_req](#input\_password\_req) | Requirements for site user passwords | <pre>object({<br/>    min_length  = number<br/>    req_upper   = bool<br/>    req_lower   = bool<br/>    req_numbers = bool<br/>    req_symbols = bool<br/>  })</pre> | n/a | yes |
@@ -89,6 +89,7 @@ No modules.
 | <a name="input_site_bucket_name"></a> [site\_bucket\_name](#input\_site\_bucket\_name) | AWS S3 BIC Site bucket name | `string` | n/a | yes |
 | <a name="input_sqs_deadletter_retention"></a> [sqs\_deadletter\_retention](#input\_sqs\_deadletter\_retention) | SQS deadletter queue message retention in seconds | `number` | `345600` | no |
 | <a name="input_sqs_visibility_timeout"></a> [sqs\_visibility\_timeout](#input\_sqs\_visibility\_timeout) | SQS message timeout in seconds | `number` | `180` | no |
+| <a name="input_uid_req"></a> [uid\_req](#input\_uid\_req) | Requirements for site user id | <pre>object({<br/>    min_length = number<br/>    max_length = number<br/><br/>  })</pre> | <pre>{<br/>  "max_length": 36,<br/>  "min_length": 36<br/>}</pre> | no |
 
 ## Outputs
 
