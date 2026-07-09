@@ -24,7 +24,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_apigatewayv2_api.search_api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/apigatewayv2_api) | resource |
+| [aws_apigatewayv2_api.recommend_api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/apigatewayv2_api) | resource |
+| [aws_apigatewayv2_stage.recommend_stage](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/apigatewayv2_stage) | resource |
 | [aws_cloudfront_cache_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_cache_policy) | resource |
 | [aws_cloudfront_origin_access_control.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control) | resource |
 | [aws_cloudfront_origin_request_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_request_policy) | resource |
@@ -33,9 +34,11 @@ No modules.
 | [aws_ecr_lifecycle_policy.embed_server_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.library_search_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.listopia_parser_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
+| [aws_ecr_lifecycle_policy.suggest_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.embed_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.library_search](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.listopia_parser](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
+| [aws_ecr_repository.suggest](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_iam_instance_profile.ecs_instance_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_role.batch_service_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.ecs_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -112,6 +115,7 @@ No modules.
 | <a name="output_lambda_function_role_arn"></a> [lambda\_function\_role\_arn](#output\_lambda\_function\_role\_arn) | n/a |
 | <a name="output_library_search_ecr_name"></a> [library\_search\_ecr\_name](#output\_library\_search\_ecr\_name) | n/a |
 | <a name="output_listopia_parser_ecr_name"></a> [listopia\_parser\_ecr\_name](#output\_listopia\_parser\_ecr\_name) | n/a |
+| <a name="output_recommend_url"></a> [recommend\_url](#output\_recommend\_url) | n/a |
 | <a name="output_s3_db_uri"></a> [s3\_db\_uri](#output\_s3\_db\_uri) | n/a |
 | <a name="output_s3_site_bucket_id"></a> [s3\_site\_bucket\_id](#output\_s3\_site\_bucket\_id) | n/a |
 | <a name="output_s3_site_bucket_regional_domain"></a> [s3\_site\_bucket\_regional\_domain](#output\_s3\_site\_bucket\_regional\_domain) | n/a |
