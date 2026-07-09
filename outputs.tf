@@ -61,6 +61,10 @@ output "library_search_ecr_name" {
   value = aws_ecr_repository.library_search.name
 }
 
+output "suggest_ecr_name" {
+  value = aws_ecr_repository.suggest.name
+}
+
 # Batch
 
 output "batch_sg_id" {
