@@ -77,7 +77,7 @@ variable "uid_req" {
   type = object({
     min_length = number
     max_length = number
-    
+
   })
   default = {
     min_length = 36
