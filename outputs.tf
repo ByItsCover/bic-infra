@@ -70,11 +70,15 @@ output "batch_sg_id" {
 # API Gateway
 
 output "api_gw_id" {
-  value = aws_apigatewayv2_api.search_api.id
+  value = aws_apigatewayv2_api.recommend_api.id
 }
 
 output "api_gw_arn" {
-  value = aws_apigatewayv2_api.search_api.execution_arn
+  value = aws_apigatewayv2_api.recommend_api.execution_arn
+}
+
+output "recommend_url" {
+  value = aws_apigatewayv2_stage.recommend_stage.invoke_url
 }
 
 # SQS
