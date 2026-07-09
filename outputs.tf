@@ -106,3 +106,7 @@ output "hardcover_secret_name" {
 output "auth_user_pool_id" {
   value = aws_cognito_user_pool.auth_pool.id
 }
+
+output "auth_user_pool_endpoint" {
+  value = aws_cognito_user_pool.auth_pool.endpoint
+}
