@@ -77,6 +77,10 @@ output "api_gw_arn" {
   value = aws_apigatewayv2_api.recommend_api.execution_arn
 }
 
+output "recommend_url" {
+  value = aws_apigatewayv2_stage.recommend_stage.invoke_url
+}
+
 # SQS
 
 output "sqs_arn" {
