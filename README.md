@@ -28,6 +28,7 @@ No modules.
 | [aws_cloudfront_cache_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_cache_policy) | resource |
 | [aws_cloudfront_origin_access_control.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control) | resource |
 | [aws_cloudfront_origin_request_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_request_policy) | resource |
+| [aws_cloudfront_response_headers_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_response_headers_policy) | resource |
 | [aws_cognito_user_pool.auth_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool) | resource |
 | [aws_ecr_lifecycle_policy.embed_server_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.library_search_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
@@ -101,6 +102,7 @@ No modules.
 | <a name="output_cf_access_control_id"></a> [cf\_access\_control\_id](#output\_cf\_access\_control\_id) | n/a |
 | <a name="output_cf_cache_policy_id"></a> [cf\_cache\_policy\_id](#output\_cf\_cache\_policy\_id) | n/a |
 | <a name="output_cf_request_policy_id"></a> [cf\_request\_policy\_id](#output\_cf\_request\_policy\_id) | n/a |
+| <a name="output_cf_response_policy_id"></a> [cf\_response\_policy\_id](#output\_cf\_response\_policy\_id) | n/a |
 | <a name="output_ecs_execution_role_arn"></a> [ecs\_execution\_role\_arn](#output\_ecs\_execution\_role\_arn) | n/a |
 | <a name="output_ecs_instance_role_arn"></a> [ecs\_instance\_role\_arn](#output\_ecs\_instance\_role\_arn) | n/a |
 | <a name="output_embed_server_ecr_name"></a> [embed\_server\_ecr\_name](#output\_embed\_server\_ecr\_name) | n/a |
