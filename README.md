@@ -100,6 +100,7 @@ No modules.
 |------|-------------|
 | <a name="output_api_gw_arn"></a> [api\_gw\_arn](#output\_api\_gw\_arn) | n/a |
 | <a name="output_api_gw_id"></a> [api\_gw\_id](#output\_api\_gw\_id) | n/a |
+| <a name="output_auth_user_pool_endpoint"></a> [auth\_user\_pool\_endpoint](#output\_auth\_user\_pool\_endpoint) | n/a |
 | <a name="output_auth_user_pool_id"></a> [auth\_user\_pool\_id](#output\_auth\_user\_pool\_id) | n/a |
 | <a name="output_batch_service_role_arn"></a> [batch\_service\_role\_arn](#output\_batch\_service\_role\_arn) | n/a |
 | <a name="output_batch_sg_id"></a> [batch\_sg\_id](#output\_batch\_sg\_id) | n/a |
