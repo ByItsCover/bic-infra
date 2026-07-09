@@ -40,7 +40,7 @@ resource "aws_cognito_user_pool" "auth_pool" {
   schema {
     name                = "uid"
     attribute_data_type = "String"
-    required            = true
+    required            = false
     mutable             = false
 
     string_attribute_constraints {
