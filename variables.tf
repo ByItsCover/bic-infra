@@ -63,12 +63,25 @@ variable "password_req" {
 variable "email_req" {
   description = "Requirements for site user emails"
   type = object({
-    max_length = number
     min_length = number
+    max_length = number
   })
   default = {
-    max_length = 254
     min_length = 6
+    max_length = 254
+  }
+}
+
+variable "uid_req" {
+  description = "Requirements for site user id"
+  type = object({
+    min_length = number
+    max_length = number
+    
+  })
+  default = {
+    min_length = 36
+    max_length = 36
   }
 }
 
