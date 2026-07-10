@@ -6,6 +6,7 @@ resource "aws_apigatewayv2_api" "recommend_api" {
     allow_origins = ["https://${var.domain_name}", "https://www.${var.domain_name}"]
     allow_methods = ["POST", "GET", "OPTIONS"]
     allow_headers = ["Content-Type", "Authorization"]
+    allow_credentials = true
     max_age       = 300
   }
 }
