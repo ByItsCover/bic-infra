@@ -5,7 +5,7 @@ resource "aws_apigatewayv2_api" "recommend_api" {
   cors_configuration {
     allow_origins = ["https://${var.domain_name}", "https://www.${var.domain_name}"]
     allow_methods = ["POST", "GET", "OPTIONS"]
-    allow_headers = ["content-type"]
+    allow_headers = ["Content-Type", "Authorization"]
     max_age       = 300
   }
 }
