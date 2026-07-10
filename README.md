@@ -122,4 +122,5 @@ No modules.
 | <a name="output_s3_site_bucket_regional_domain"></a> [s3\_site\_bucket\_regional\_domain](#output\_s3\_site\_bucket\_regional\_domain) | n/a |
 | <a name="output_sqs_arn"></a> [sqs\_arn](#output\_sqs\_arn) | n/a |
 | <a name="output_sqs_url"></a> [sqs\_url](#output\_sqs\_url) | n/a |
+| <a name="output_suggest_ecr_name"></a> [suggest\_ecr\_name](#output\_suggest\_ecr\_name) | n/a |
 <!-- END_TF_DOCS -->
