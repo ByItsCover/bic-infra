@@ -65,6 +65,10 @@ output "suggest_ecr_name" {
   value = aws_ecr_repository.suggest.name
 }
 
+output "learn_ecr_name" {
+  value = aws_ecr_repository.learn.name
+}
+
 # Batch
 
 output "batch_sg_id" {
