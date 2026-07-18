@@ -74,7 +74,7 @@ variable "batch_envs" {
   description = "List of Batch compute environment configurations"
 
   validation {
-    condition = contains([for env in var.batch_envs : env.name], var.learn_batch_name)
+    condition     = contains([for env in var.batch_envs : env.name], var.learn_batch_name)
     error_message = "Batch envs must contain an entry for 'learn' batch environment"
   }
 }
