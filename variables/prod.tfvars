@@ -23,7 +23,7 @@ batch_envs = [
     image_id         = "/aws/service/ecs/optimized-ami/amazon-linux-2023/arm64/recommended/image_id"
   },
   {
-    name             = "learn"
+    name             = "learning"
     allocation_strat = "SPOT_CAPACITY_OPTIMIZED"
     instance_types    = ["g4dn.xlarge"]
     compute_type     = "SPOT"
