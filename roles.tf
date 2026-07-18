@@ -105,13 +105,24 @@ resource "aws_iam_role_policy_attachment" "batch_service_policy" {
 
 data "aws_iam_policy_document" "scheduler_policy" {
   statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["scheduler.amazonaws.com"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "scheduler_batch_policy" {
+  statement {
     actions = [
       "batch:SubmitJob",
       "batch:DescribeJobs",
       "batch:TerminateJob"
     ]
 
-    resources = [aws_sqs_queue.embed_queue.arn]
+    resources = [aws_batch_job_queue.queue[var.learn_batch_name].arn]
   }
 }
 
@@ -119,6 +130,12 @@ resource "aws_iam_role" "scheduler_role" {
   name = "scheduler_role"
 
   assume_role_policy = data.aws_iam_policy_document.scheduler_policy.json
+}
+
+resource "aws_iam_role_policy" "scheduler_batch_role_policy" {
+  name   = "scheduler_batch_policy"
+  role   = aws_iam_role.scheduler_role.name
+  policy = data.aws_iam_policy_document.scheduler_batch_policy.json
 }
 
 # ECS
