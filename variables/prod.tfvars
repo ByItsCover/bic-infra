@@ -10,6 +10,25 @@ cover_db_folder_name = "coverdb"
 sqs_visibility_timeout   = 180
 sqs_deadletter_retention = 604800 # 1 week
 
+# Batch
+
+batch_envs = [
+  {
+    name = "listopia"
+    allocation_strat = "SPOT_CAPACITY_OPTIMIZED"
+    instance_types = ["default_arm64"]
+    compute_type = "SPOT"
+    image_id = "/aws/service/ecs/optimized-ami/amazon-linux-2023/arm64/recommended/image_id"
+  },
+  {
+    name = var.learn_batch_name
+    allocation_strat = "SPOT_CAPACITY_OPTIMIZED"
+    instance_type = ["g4dn.xlarge"]
+    compute_type = "SPOT"
+    image_id = "/aws/service/ecs/optimized-ami/amazon-linux-2023/gpu/recommended/image_id"
+  }
+]
+
 # Website
 domain_name = "by-its-cover.com"
 password_req = {

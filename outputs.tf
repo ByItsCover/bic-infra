@@ -4,17 +4,14 @@ output "lambda_function_role_arn" {
   value = aws_iam_role.lambda_function_role.arn
 }
 
-output "batch_service_role_arn" {
-  value = aws_iam_role.batch_service_role.arn
-}
-
-output "ecs_instance_role_arn" {
-  value = aws_iam_instance_profile.ecs_instance_role.arn
-}
-
 output "ecs_execution_role_arn" {
   value = aws_iam_role.ecs_role.arn
 }
+
+output "scheduler_role_arn" {
+  value = aws_iam_role.scheduler_role.arn
+}
+
 # S3
 
 output "s3_site_bucket_id" {
@@ -69,12 +66,6 @@ output "learn_ecr_name" {
   value = aws_ecr_repository.learn.name
 }
 
-# Batch
-
-output "batch_sg_id" {
-  value = aws_security_group.batch.id
-}
-
 # API Gateway
 
 output "api_gw_id" {
@@ -97,6 +88,12 @@ output "sqs_arn" {
 
 output "sqs_url" {
   value = aws_sqs_queue.embed_queue.url
+}
+
+# Batch
+
+output "learn_batch_queue_arn" {
+  value = aws_batch_job_queue.queue[var.learn_batch_name].arn
 }
 
 # APIs

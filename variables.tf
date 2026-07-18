@@ -42,6 +42,39 @@ variable "sqs_deadletter_retention" {
   default     = 345600
 }
 
+# Batch
+
+variable "max_batch_vcpus" {
+  type = number
+  description = "Maximum EC2 VCPUs a Batch job can use"
+  default = 64
+}
+
+variable "batch_ebs_size" {
+  type = number
+  description = "EBS Volume size for Batch"
+  default = 50
+}
+
+variable "learn_batch_name" {
+  type = string
+  description = "Batch env name for Learn batch job and queue"
+  default = "learning"
+}
+
+variable "batch_envs" {
+  type = list(
+    object({
+      name = string
+      allocation_strat = string
+      instance_types = list(string)
+      compute_type = string
+      image_id = string
+    })
+  )
+  description = "List of Batch compute environment configurations"
+}
+
 # Website
 
 variable "domain_name" {
