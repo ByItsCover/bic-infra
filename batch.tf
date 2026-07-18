@@ -2,7 +2,7 @@ import {
   for_each = {
     for env in var.batch_envs : env.name => env
   }
-  
+
   to = aws_ecs_cluster.spot_cluster[each.key]
   id = split("/", aws_batch_compute_environment.spot[each.key].ecs_cluster_arn)[1]
 }
@@ -38,10 +38,10 @@ resource "aws_launch_template" "batch_launch_template" {
 resource "aws_batch_compute_environment" "spot" {
   for_each = {
     for env in var.batch_envs : env.name => {
-      prefix = "${env.name}-${env.compute_type}-fleet-"
-      instance_types = env.instance_types
-      compute_type = env.compute_type
-      template_id = aws_launch_template.batch_launch_template[env.name].id
+      prefix           = "${env.name}-${env.compute_type}-fleet-"
+      instance_types   = env.instance_types
+      compute_type     = env.compute_type
+      template_id      = aws_launch_template.batch_launch_template[env.name].id
       template_version = aws_launch_template.batch_launch_template[env.name].latest_version
     }
   }
@@ -91,7 +91,7 @@ resource "aws_ecs_cluster" "spot_cluster" {
 resource "aws_batch_job_queue" "queue" {
   for_each = {
     for env in var.batch_envs : env.name => {
-      queue_name = "${env.name}-queue"
+      queue_name      = "${env.name}-queue"
       compute_env_arn = aws_batch_compute_environment.spot[env.name].arn
     }
   }

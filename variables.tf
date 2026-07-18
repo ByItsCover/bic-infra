@@ -45,31 +45,31 @@ variable "sqs_deadletter_retention" {
 # Batch
 
 variable "max_batch_vcpus" {
-  type = number
+  type        = number
   description = "Maximum EC2 VCPUs a Batch job can use"
-  default = 64
+  default     = 64
 }
 
 variable "batch_ebs_size" {
-  type = number
+  type        = number
   description = "EBS Volume size for Batch"
-  default = 50
+  default     = 50
 }
 
 variable "learn_batch_name" {
-  type = string
+  type        = string
   description = "Batch env name for Learn batch job and queue"
-  default = "learning"
+  default     = "learning"
 }
 
 variable "batch_envs" {
   type = list(
     object({
-      name = string
+      name             = string
       allocation_strat = string
-      instance_types = list(string)
-      compute_type = string
-      image_id = string
+      instance_types   = list(string)
+      compute_type     = string
+      image_id         = string
     })
   )
   description = "List of Batch compute environment configurations"

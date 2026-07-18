@@ -26,6 +26,8 @@ No modules.
 |------|------|
 | [aws_apigatewayv2_api.recommend_api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/apigatewayv2_api) | resource |
 | [aws_apigatewayv2_stage.recommend_stage](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/apigatewayv2_stage) | resource |
+| [aws_batch_compute_environment.spot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/batch_compute_environment) | resource |
+| [aws_batch_job_queue.queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/batch_job_queue) | resource |
 | [aws_cloudfront_cache_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_cache_policy) | resource |
 | [aws_cloudfront_origin_access_control.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control) | resource |
 | [aws_cloudfront_origin_request_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_request_policy) | resource |
@@ -41,10 +43,12 @@ No modules.
 | [aws_ecr_repository.library_search](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.listopia_parser](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.suggest](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
+| [aws_ecs_cluster.spot_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_cluster) | resource |
 | [aws_iam_instance_profile.ecs_instance_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_role.batch_service_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.ecs_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.lambda_function_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role.scheduler_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy.ecs_sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy.lambda_sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.batch_service_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
@@ -55,6 +59,7 @@ No modules.
 | [aws_iam_role_policy_attachment.lambda_s3_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.lambda_secrets_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.lambda_sqs_execute_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_launch_template.batch_launch_template](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_s3_bucket.cover_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.site_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.site_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl) | resource |
@@ -75,7 +80,10 @@ No modules.
 | [aws_iam_policy_document.ecs_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.lambda_function_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.s3_full_access_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.scheduler_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_ssm_parameter.image_id](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
+| [aws_subnets.subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
 | [aws_vpc.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
 
 ## Inputs
@@ -83,12 +91,16 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS Region | `string` | n/a | yes |
+| <a name="input_batch_ebs_size"></a> [batch\_ebs\_size](#input\_batch\_ebs\_size) | EBS Volume size for Batch | `number` | `50` | no |
+| <a name="input_batch_envs"></a> [batch\_envs](#input\_batch\_envs) | List of Batch compute environment configurations | <pre>list(<br/>    object({<br/>      name             = string<br/>      allocation_strat = string<br/>      instance_types   = list(string)<br/>      compute_type     = string<br/>      image_id         = string<br/>    })<br/>  )</pre> | n/a | yes |
 | <a name="input_cover_bucket_name"></a> [cover\_bucket\_name](#input\_cover\_bucket\_name) | AWS S3 Cover bucket name | `string` | n/a | yes |
 | <a name="input_cover_db_folder_name"></a> [cover\_db\_folder\_name](#input\_cover\_db\_folder\_name) | AWS S3 Cover DB folder name | `string` | n/a | yes |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Domain name for site | `string` | n/a | yes |
 | <a name="input_email_req"></a> [email\_req](#input\_email\_req) | Requirements for site user emails | <pre>object({<br/>    min_length = number<br/>    max_length = number<br/>  })</pre> | <pre>{<br/>  "max_length": 254,<br/>  "min_length": 6<br/>}</pre> | no |
 | <a name="input_hardcover_api_key"></a> [hardcover\_api\_key](#input\_hardcover\_api\_key) | The HardCover API Key | `string` | n/a | yes |
 | <a name="input_hardcover_key_name"></a> [hardcover\_key\_name](#input\_hardcover\_key\_name) | Name of the HardCover key secret | `string` | `"hardcover-key"` | no |
+| <a name="input_learn_batch_name"></a> [learn\_batch\_name](#input\_learn\_batch\_name) | Batch env name for Learn batch job and queue | `string` | `"learning"` | no |
+| <a name="input_max_batch_vcpus"></a> [max\_batch\_vcpus](#input\_max\_batch\_vcpus) | Maximum EC2 VCPUs a Batch job can use | `number` | `64` | no |
 | <a name="input_password_req"></a> [password\_req](#input\_password\_req) | Requirements for site user passwords | <pre>object({<br/>    min_length  = number<br/>    req_upper   = bool<br/>    req_lower   = bool<br/>    req_numbers = bool<br/>    req_symbols = bool<br/>  })</pre> | n/a | yes |
 | <a name="input_site_bucket_index_doc"></a> [site\_bucket\_index\_doc](#input\_site\_bucket\_index\_doc) | Index document file name within site S3 bucket | `string` | `"index.html"` | no |
 | <a name="input_site_bucket_name"></a> [site\_bucket\_name](#input\_site\_bucket\_name) | AWS S3 BIC Site bucket name | `string` | n/a | yes |
@@ -104,18 +116,16 @@ No modules.
 | <a name="output_api_gw_id"></a> [api\_gw\_id](#output\_api\_gw\_id) | n/a |
 | <a name="output_auth_user_pool_endpoint"></a> [auth\_user\_pool\_endpoint](#output\_auth\_user\_pool\_endpoint) | n/a |
 | <a name="output_auth_user_pool_id"></a> [auth\_user\_pool\_id](#output\_auth\_user\_pool\_id) | n/a |
-| <a name="output_batch_service_role_arn"></a> [batch\_service\_role\_arn](#output\_batch\_service\_role\_arn) | n/a |
-| <a name="output_batch_sg_id"></a> [batch\_sg\_id](#output\_batch\_sg\_id) | n/a |
 | <a name="output_cf_access_control_id"></a> [cf\_access\_control\_id](#output\_cf\_access\_control\_id) | n/a |
 | <a name="output_cf_cache_policy_id"></a> [cf\_cache\_policy\_id](#output\_cf\_cache\_policy\_id) | n/a |
 | <a name="output_cf_request_policy_id"></a> [cf\_request\_policy\_id](#output\_cf\_request\_policy\_id) | n/a |
 | <a name="output_cf_response_policy_id"></a> [cf\_response\_policy\_id](#output\_cf\_response\_policy\_id) | n/a |
 | <a name="output_ecs_execution_role_arn"></a> [ecs\_execution\_role\_arn](#output\_ecs\_execution\_role\_arn) | n/a |
-| <a name="output_ecs_instance_role_arn"></a> [ecs\_instance\_role\_arn](#output\_ecs\_instance\_role\_arn) | n/a |
 | <a name="output_embed_server_ecr_name"></a> [embed\_server\_ecr\_name](#output\_embed\_server\_ecr\_name) | n/a |
 | <a name="output_hardcover_secret_arn"></a> [hardcover\_secret\_arn](#output\_hardcover\_secret\_arn) | n/a |
 | <a name="output_hardcover_secret_name"></a> [hardcover\_secret\_name](#output\_hardcover\_secret\_name) | n/a |
 | <a name="output_lambda_function_role_arn"></a> [lambda\_function\_role\_arn](#output\_lambda\_function\_role\_arn) | n/a |
+| <a name="output_learn_batch_queue_arn"></a> [learn\_batch\_queue\_arn](#output\_learn\_batch\_queue\_arn) | n/a |
 | <a name="output_learn_ecr_name"></a> [learn\_ecr\_name](#output\_learn\_ecr\_name) | n/a |
 | <a name="output_library_search_ecr_name"></a> [library\_search\_ecr\_name](#output\_library\_search\_ecr\_name) | n/a |
 | <a name="output_listopia_parser_ecr_name"></a> [listopia\_parser\_ecr\_name](#output\_listopia\_parser\_ecr\_name) | n/a |
@@ -123,6 +133,7 @@ No modules.
 | <a name="output_s3_db_uri"></a> [s3\_db\_uri](#output\_s3\_db\_uri) | n/a |
 | <a name="output_s3_site_bucket_id"></a> [s3\_site\_bucket\_id](#output\_s3\_site\_bucket\_id) | n/a |
 | <a name="output_s3_site_bucket_regional_domain"></a> [s3\_site\_bucket\_regional\_domain](#output\_s3\_site\_bucket\_regional\_domain) | n/a |
+| <a name="output_scheduler_role_arn"></a> [scheduler\_role\_arn](#output\_scheduler\_role\_arn) | n/a |
 | <a name="output_sqs_arn"></a> [sqs\_arn](#output\_sqs\_arn) | n/a |
 | <a name="output_sqs_url"></a> [sqs\_url](#output\_sqs\_url) | n/a |
 | <a name="output_suggest_ecr_name"></a> [suggest\_ecr\_name](#output\_suggest\_ecr\_name) | n/a |
