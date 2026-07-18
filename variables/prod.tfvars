@@ -25,7 +25,7 @@ batch_envs = [
   {
     name             = "learn"
     allocation_strat = "SPOT_CAPACITY_OPTIMIZED"
-    instance_types    = ["g4dn.xlarge"]
+    instance_types   = ["g4dn.xlarge"]
     compute_type     = "SPOT"
     image_id         = "/aws/service/ecs/optimized-ami/amazon-linux-2023/gpu/recommended/image_id"
   }
