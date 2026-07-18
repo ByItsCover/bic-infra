@@ -89,7 +89,6 @@ resource "aws_batch_job_queue" "queue" {
     for env in var.batch_envs : env.name => {
       queue_name = "${env.name}-queue"
       compute_env_arn = aws_batch_compute_environment.spot[env.name].arn
-      compute_env_id = aws_batch_compute_environment.spot[env.name].id
     }
   }
 
@@ -104,7 +103,7 @@ resource "aws_batch_job_queue" "queue" {
 
   lifecycle {
     replace_triggered_by = [
-      each.value.compute_env_id
+      aws_batch_compute_environment.spot[each.key].id
     ]
   }
 }
