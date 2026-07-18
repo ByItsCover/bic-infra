@@ -12,6 +12,8 @@ sqs_deadletter_retention = 604800 # 1 week
 
 # Batch
 
+learn_batch_name = "learning"
+
 batch_envs = [
   {
     name             = "listopia"
@@ -21,7 +23,7 @@ batch_envs = [
     image_id         = "/aws/service/ecs/optimized-ami/amazon-linux-2023/arm64/recommended/image_id"
   },
   {
-    name             = var.learn_batch_name
+    name             = "learning"
     allocation_strat = "SPOT_CAPACITY_OPTIMIZED"
     instance_type    = ["g4dn.xlarge"]
     compute_type     = "SPOT"
