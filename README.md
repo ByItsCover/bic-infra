@@ -14,7 +14,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.54.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.55.0 |
 
 ## Modules
 
@@ -32,10 +32,12 @@ No modules.
 | [aws_cloudfront_response_headers_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_response_headers_policy) | resource |
 | [aws_cognito_user_pool.auth_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool) | resource |
 | [aws_ecr_lifecycle_policy.embed_server_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
+| [aws_ecr_lifecycle_policy.learn_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.library_search_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.listopia_parser_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.suggest_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.embed_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
+| [aws_ecr_repository.learn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.library_search](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.listopia_parser](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.suggest](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
@@ -114,6 +116,7 @@ No modules.
 | <a name="output_hardcover_secret_arn"></a> [hardcover\_secret\_arn](#output\_hardcover\_secret\_arn) | n/a |
 | <a name="output_hardcover_secret_name"></a> [hardcover\_secret\_name](#output\_hardcover\_secret\_name) | n/a |
 | <a name="output_lambda_function_role_arn"></a> [lambda\_function\_role\_arn](#output\_lambda\_function\_role\_arn) | n/a |
+| <a name="output_learn_ecr_name"></a> [learn\_ecr\_name](#output\_learn\_ecr\_name) | n/a |
 | <a name="output_library_search_ecr_name"></a> [library\_search\_ecr\_name](#output\_library\_search\_ecr\_name) | n/a |
 | <a name="output_listopia_parser_ecr_name"></a> [listopia\_parser\_ecr\_name](#output\_listopia\_parser\_ecr\_name) | n/a |
 | <a name="output_recommend_url"></a> [recommend\_url](#output\_recommend\_url) | n/a |
