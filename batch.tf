@@ -1,13 +1,10 @@
 import {
   for_each = {
-    for env in var.batch_envs : env.name => {
-      cluster = aws_ecs_cluster.spot_cluster[env.name]
-      cluster_id = split("/", aws_batch_compute_environment.spot[env.name].ecs_cluster_arn)[1]
-    }
+    for env in var.batch_envs : env.name => env
   }
   
-  to = each.value.cluster
-  id = each.value.cluster_id
+  to = aws_ecs_cluster.spot_cluster[each.key]
+  id = split("/", aws_batch_compute_environment.spot[each.key].ecs_cluster_arn)[1]
 }
 
 
