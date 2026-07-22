@@ -15,7 +15,7 @@ resource "aws_efs_file_system" "rec_model" {
 
 
 resource "aws_efs_mount_target" "rec_model" {
-  for_each = data.aws_subnets.subnet.ids
+  for_each = toset(data.aws_subnets.subnet.ids)
 
   file_system_id  = aws_efs_file_system.rec_model.id
   subnet_id       = each.value
