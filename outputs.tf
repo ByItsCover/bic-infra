@@ -96,6 +96,20 @@ output "learn_batch_queue_arn" {
   value = aws_batch_job_queue.queue[var.learn_batch_name].arn
 }
 
+# EFS
+
+output "rec_efs_system_id" {
+  value = aws_efs_file_system.rec_model.id
+}
+
+output "rec_efs_access_id" {
+  value = aws_efs_access_point.rec_model.id
+}
+
+output "rec_efs_access_arn" {
+  value = aws_efs_access_point.rec_model.arn
+}
+
 # APIs
 
 output "hardcover_secret_arn" {
