@@ -44,6 +44,9 @@ No modules.
 | [aws_ecr_repository.listopia_parser](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.suggest](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecs_cluster.spot_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_cluster) | resource |
+| [aws_efs_access_point.rec_model](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_access_point) | resource |
+| [aws_efs_file_system.rec_model](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_file_system) | resource |
+| [aws_efs_mount_target.rec_model](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_mount_target) | resource |
 | [aws_iam_instance_profile.ecs_instance_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_role.batch_service_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.ecs_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -72,10 +75,13 @@ No modules.
 | [aws_secretsmanager_secret.hardcover_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret) | resource |
 | [aws_secretsmanager_secret_version.hardcover_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret_version) | resource |
 | [aws_security_group.batch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group.rec_efs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_sqs_queue.embed_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue.embed_queue_deadletter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue_redrive_allow_policy.embed_queue_redrive](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue_redrive_allow_policy) | resource |
 | [aws_vpc_security_group_egress_rule.batch_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_egress_rule) | resource |
+| [aws_vpc_security_group_egress_rule.rec_efs_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_egress_rule) | resource |
+| [aws_vpc_security_group_ingress_rule.rec_efs_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_ingress_rule) | resource |
 | [aws_ecr_lifecycle_policy_document.expiry_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecr_lifecycle_policy_document) | data source |
 | [aws_iam_policy_document.batch_service_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ecs_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -131,6 +137,9 @@ No modules.
 | <a name="output_learn_ecr_name"></a> [learn\_ecr\_name](#output\_learn\_ecr\_name) | n/a |
 | <a name="output_library_search_ecr_name"></a> [library\_search\_ecr\_name](#output\_library\_search\_ecr\_name) | n/a |
 | <a name="output_listopia_parser_ecr_name"></a> [listopia\_parser\_ecr\_name](#output\_listopia\_parser\_ecr\_name) | n/a |
+| <a name="output_rec_efs_access_arn"></a> [rec\_efs\_access\_arn](#output\_rec\_efs\_access\_arn) | n/a |
+| <a name="output_rec_efs_access_id"></a> [rec\_efs\_access\_id](#output\_rec\_efs\_access\_id) | n/a |
+| <a name="output_rec_efs_system_id"></a> [rec\_efs\_system\_id](#output\_rec\_efs\_system\_id) | n/a |
 | <a name="output_recommend_url"></a> [recommend\_url](#output\_recommend\_url) | n/a |
 | <a name="output_s3_db_uri"></a> [s3\_db\_uri](#output\_s3\_db\_uri) | n/a |
 | <a name="output_s3_site_bucket_id"></a> [s3\_site\_bucket\_id](#output\_s3\_site\_bucket\_id) | n/a |

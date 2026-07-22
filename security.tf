@@ -24,9 +24,9 @@ resource "aws_security_group" "rec_efs" {
 resource "aws_vpc_security_group_ingress_rule" "rec_efs_ingress" {
   security_group_id = aws_security_group.rec_efs.id
 
-  ip_protocol = "tcp"
-  from_port = 2049
-  to_port = 2049
+  ip_protocol                  = "tcp"
+  from_port                    = 2049
+  to_port                      = 2049
   referenced_security_group_id = aws_security_group.batch.id
 }
 
