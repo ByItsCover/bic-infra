@@ -101,11 +101,6 @@ resource "aws_iam_role_policy_attachment" "batch_service_policy" {
   role       = aws_iam_role.batch_service_role.name
 }
 
-resource "aws_iam_role_policy_attachment" "batch_s3_policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
-  role       = aws_iam_role.batch_service_role.name
-}
-
 # Scheduler
 
 data "aws_iam_policy_document" "scheduler_policy" {
@@ -179,6 +174,11 @@ resource "aws_iam_role_policy_attachment" "ecs_secrets_policy" {
 
 resource "aws_iam_role_policy_attachment" "ecs_ssm_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  role       = aws_iam_role.ecs_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_s3_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
   role       = aws_iam_role.ecs_role.name
 }
 
