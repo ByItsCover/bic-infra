@@ -177,6 +177,11 @@ resource "aws_iam_role_policy_attachment" "ecs_ssm_policy" {
   role       = aws_iam_role.ecs_role.name
 }
 
+resource "aws_iam_role_policy_attachment" "ecs_s3_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+  role       = aws_iam_role.ecs_role.name
+}
+
 resource "aws_iam_instance_profile" "ecs_instance_role" {
   name = "ecs_instance_role"
   role = aws_iam_role.ecs_role.name

@@ -96,6 +96,12 @@ output "learn_batch_queue_arn" {
   value = aws_batch_job_queue.queue[var.learn_batch_name].arn
 }
 
+# EventBridge
+
+output "eventbridge_deadletter_arn" {
+  value = aws_sqs_queue.eventbridge_deadletter.arn
+}
+
 # EFS
 
 output "rec_efs_system_id" {
