@@ -138,6 +138,12 @@ resource "aws_iam_role_policy" "scheduler_batch_role_policy" {
   policy = data.aws_iam_policy_document.scheduler_batch_policy.json
 }
 
+resource "aws_iam_role_policy" "scheduler_sqs_message_policy" {
+  name   = "scheduler_sqs_message_policy"
+  role   = aws_iam_role.scheduler_role.name
+  policy = data.aws_iam_policy_document.sqs_message_policy.json
+}
+
 # ECS
 
 data "aws_iam_policy_document" "ecs_policy" {
