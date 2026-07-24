@@ -1,12 +1,7 @@
-import {
-  for_each = {
-    for env in var.batch_envs : env.name => env
-  }
-
-  to = aws_ecs_cluster.spot_cluster[each.key]
-  id = split("/", aws_batch_compute_environment.spot[each.key].ecs_cluster_arn)[1]
+resource "aws_ecs_account_setting_default" "container_insights" {
+  name  = "containerInsights"
+  value = "enhanced"
 }
-
 
 data "aws_ssm_parameter" "image_id" {
   for_each = {
@@ -75,17 +70,6 @@ resource "aws_batch_compute_environment" "spot" {
 
   service_role = aws_iam_role.batch_service_role.arn
   type         = "MANAGED"
-}
-
-resource "aws_ecs_cluster" "spot_cluster" {
-  for_each = aws_batch_compute_environment.spot
-
-  name = split("/", each.value.ecs_cluster_arn)[1]
-
-  setting {
-    name  = "containerInsights"
-    value = "enhanced"
-  }
 }
 
 resource "aws_batch_job_queue" "queue" {
