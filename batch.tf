@@ -33,7 +33,7 @@ resource "aws_launch_template" "batch_launch_template" {
 resource "aws_batch_compute_environment" "spot" {
   for_each = {
     for env in var.batch_envs : env.name => {
-      prefix           = "${env.name}-${env.compute_type}-fleet-"
+      prefix           = "${env.name}-${env.compute_type}-batch-fleet-"
       instance_types   = env.instance_types
       compute_type     = env.compute_type
       template_id      = aws_launch_template.batch_launch_template[env.name].id
@@ -70,6 +70,10 @@ resource "aws_batch_compute_environment" "spot" {
 
   service_role = aws_iam_role.batch_service_role.arn
   type         = "MANAGED"
+
+  depends_on = [
+    aws_ecs_account_setting_default.container_insights
+  ]
 }
 
 resource "aws_batch_job_queue" "queue" {
