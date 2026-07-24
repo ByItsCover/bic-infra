@@ -35,13 +35,13 @@ resource "aws_s3_bucket_public_access_block" "site_bucket" {
 }
 
 resource "aws_s3_bucket_acl" "site_bucket" {
+  bucket = aws_s3_bucket.site_bucket.id
+  acl    = "private"
+
   depends_on = [
     aws_s3_bucket_ownership_controls.site_bucket,
     aws_s3_bucket_public_access_block.site_bucket
   ]
-
-  bucket = aws_s3_bucket.site_bucket.id
-  acl    = "private"
 }
 
 # Vector DB
