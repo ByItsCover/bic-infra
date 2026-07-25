@@ -12,6 +12,10 @@ output "scheduler_role_arn" {
   value = aws_iam_role.scheduler_role.arn
 }
 
+output "scheduler_role_name" {
+  value = aws_iam_role.scheduler_role.name
+}
+
 # S3
 
 output "s3_site_bucket_id" {
