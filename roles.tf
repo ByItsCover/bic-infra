@@ -118,6 +118,11 @@ resource "aws_iam_role" "batch_job_role" {
   assume_role_policy = data.aws_iam_policy_document.batch_job_policy.json
 }
 
+resource "aws_iam_role_policy_attachment" "batch_job_s3_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+  role       = aws_iam_role.batch_job_role.name
+}
+
 # Scheduler
 
 data "aws_iam_policy_document" "scheduler_policy" {
