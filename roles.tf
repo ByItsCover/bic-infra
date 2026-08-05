@@ -90,6 +90,17 @@ data "aws_iam_policy_document" "batch_service_policy" {
   }
 }
 
+data "aws_iam_policy_document" "batch_job_policy" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ecs-tasks.amazonaws.com"]
+    }
+  }
+}
+
 resource "aws_iam_role" "batch_service_role" {
   name = "batch_service_role"
 
@@ -99,6 +110,12 @@ resource "aws_iam_role" "batch_service_role" {
 resource "aws_iam_role_policy_attachment" "batch_service_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
   role       = aws_iam_role.batch_service_role.name
+}
+
+resource "aws_iam_role" "batch_job_role" {
+  name = "batch_job_role"
+
+  assume_role_policy = data.aws_iam_policy_document.batch_job_policy.json
 }
 
 # Scheduler
