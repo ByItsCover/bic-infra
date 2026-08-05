@@ -123,6 +123,11 @@ resource "aws_iam_role_policy_attachment" "batch_job_s3_policy" {
   role       = aws_iam_role.batch_job_role.name
 }
 
+resource "aws_iam_role_policy_attachment" "batch_job_lambda_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaRole"
+  role       = aws_iam_role.batch_job_role.name
+}
+
 # Scheduler
 
 data "aws_iam_policy_document" "scheduler_policy" {
