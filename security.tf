@@ -43,15 +43,6 @@ resource "aws_vpc_security_group_egress_rule" "rec_efs_egress" {
   cidr_ipv4   = "0.0.0.0/0"
 }
 
-resource "aws_vpc_security_group_ingress_rule" "rec_efs_batch_ingress" {
-  security_group_id = aws_security_group.rec_efs.id
-
-  ip_protocol                  = "tcp"
-  from_port                    = 2049
-  to_port                      = 2049
-  referenced_security_group_id = aws_security_group.batch.id
-}
-
 resource "aws_vpc_security_group_ingress_rule" "rec_efs_lambda_ingress" {
   security_group_id = aws_security_group.rec_efs.id
 
