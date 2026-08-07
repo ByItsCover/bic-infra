@@ -95,7 +95,7 @@ resource "aws_iam_role_policy_attachment" "lambda_secrets_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_vpc_policy" {
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
   role       = aws_iam_role.lambda_function_role.name
 }
 
