@@ -45,6 +45,23 @@ data "aws_iam_policy_document" "lambda_function_policy" {
   }
 }
 
+data "aws_iam_policy_document" "rec_efs_policy" {
+  statement {
+    actions = [
+      "elasticfilesystem:ClientMount",
+      "elasticfilesystem:ClientWrite"
+    ]
+
+    resources = [aws_efs_file_system.rec_model.arn]
+
+    condition {
+      test     = "StringEquals"
+      variable = "elasticfilesystem:AccessPointArn"
+      values   = [aws_efs_access_point.rec_model.arn]
+    }
+  }
+}
+
 resource "aws_iam_role" "lambda_function_role" {
   name = "lambda_function_role"
 
@@ -75,6 +92,17 @@ resource "aws_iam_role_policy_attachment" "lambda_s3_policy" {
 resource "aws_iam_role_policy_attachment" "lambda_secrets_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AWSSecretsManagerClientReadOnlyAccess"
   role       = aws_iam_role.lambda_function_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_vpc_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+  role       = aws_iam_role.lambda_function_role.name
+}
+
+resource "aws_iam_role_policy" "lambda_rec_efs_policy" {
+  name   = "lambda_rec_efs_policy"
+  role   = aws_iam_role.lambda_function_role.name
+  policy = data.aws_iam_policy_document.rec_efs_policy.json
 }
 
 # Batch
