@@ -20,6 +20,12 @@ output "job_role_arn" {
   value = aws_iam_role.batch_job_role.arn
 }
 
+# Security
+
+output "lambda_sg_id" {
+  value = aws_security_group.lambda.id
+}
+
 # S3
 
 output "s3_site_bucket_id" {
