@@ -67,8 +67,8 @@ resource "aws_s3_bucket_notification" "cover_dump_notification" {
   bucket = aws_s3_bucket.cover_dump.id
 
   queue {
-    queue_arn = aws_sqs_queue.embed_queue.arn
-    events = ["s3:ObjectCreated:*"]
+    queue_arn     = aws_sqs_queue.embed_queue.arn
+    events        = ["s3:ObjectCreated:*"]
     filter_suffix = ".something"
   }
 }
