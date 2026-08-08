@@ -53,9 +53,7 @@ No modules.
 | [aws_iam_role.ecs_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.lambda_function_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.scheduler_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.ecs_sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy.lambda_rec_efs_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.lambda_sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy.scheduler_batch_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy.scheduler_sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.batch_job_lambda_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
@@ -92,6 +90,7 @@ No modules.
 | [aws_sqs_queue.embed_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue.embed_queue_deadletter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue.eventbridge_deadletter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
+| [aws_sqs_queue_policy.s3_allow_sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue_policy) | resource |
 | [aws_sqs_queue_redrive_allow_policy.embed_queue_redrive](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue_redrive_allow_policy) | resource |
 | [aws_vpc_endpoint.s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint) | resource |
 | [aws_vpc_security_group_egress_rule.batch_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_egress_rule) | resource |
@@ -106,6 +105,7 @@ No modules.
 | [aws_iam_policy_document.lambda_function_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.rec_efs_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.s3_full_access_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.s3_sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.scheduler_batch_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.scheduler_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -119,7 +119,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS Region | `string` | n/a | yes |
 | <a name="input_batch_ebs_size"></a> [batch\_ebs\_size](#input\_batch\_ebs\_size) | EBS Volume size for Batch | `number` | `50` | no |
-| <a name="input_batch_envs"></a> [batch\_envs](#input\_batch\_envs) | List of Batch compute environment configurations | <pre>list(<br/>    object({<br/>      name             = string<br/>      allocation_strat = string<br/>      instance_types   = list(string)<br/>      compute_type     = string<br/>      image_id         = string<br/>    })<br/>  )</pre> | n/a | yes |
+| <a name="input_batch_envs"></a> [batch\_envs](#input\_batch\_envs) | List of Batch compute environment configurations | <pre>list(<br/>    object({<br/>      name             = string<br/>      allocation_strat = string<br/>      instance_types   = list(string)<br/>      compute_type     = string<br/>      image_id         = string<br/>      desired_vcpus    = number<br/>    })<br/>  )</pre> | n/a | yes |
 | <a name="input_cover_bucket_name"></a> [cover\_bucket\_name](#input\_cover\_bucket\_name) | AWS S3 Cover bucket name | `string` | n/a | yes |
 | <a name="input_cover_db_folder_name"></a> [cover\_db\_folder\_name](#input\_cover\_db\_folder\_name) | AWS S3 Cover DB folder name | `string` | n/a | yes |
 | <a name="input_cover_dump_name"></a> [cover\_dump\_name](#input\_cover\_dump\_name) | AWS S3 Cover dump name | `string` | n/a | yes |
