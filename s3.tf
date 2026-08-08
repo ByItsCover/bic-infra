@@ -72,3 +72,19 @@ resource "aws_s3_bucket_notification" "cover_dump_notification" {
     filter_suffix = ".bin"
   }
 }
+
+resource "aws_s3_bucket_lifecycle_configuration" "cover_dump_config" {
+  bucket = aws_s3_bucket.cover_dump.bucket
+
+  rule {
+    id = "delete_each_day"
+
+    filter {}
+
+    expiration {
+      days = 1
+    }
+
+    status = "Enabled"
+  }
+}
