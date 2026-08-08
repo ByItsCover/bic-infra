@@ -32,6 +32,25 @@ data "aws_iam_policy_document" "sqs_message_policy" {
   }
 }
 
+data "aws_iam_policy_document" "s3_sqs_message_policy" {
+  statement {
+    actions = ["sqs:SendMessage"]
+
+    resources = [aws_sqs_queue.embed_queue.arn]
+
+    condition {
+      test     = "ArnEquals"
+      variable = "aws:SourceArn"
+      values   = [aws_s3_bucket.cover_dump.arn]
+    }
+  }
+}
+
+resource "aws_sqs_queue_policy" "s3_allow_sqs_message_policy" {
+  queue_url = aws_sqs_queue.embed_queue.id
+  policy    = data.aws_iam_policy_document.s3_sqs_message_policy.json
+}
+
 # Lambda
 
 data "aws_iam_policy_document" "lambda_function_policy" {
@@ -73,11 +92,13 @@ resource "aws_iam_role_policy_attachment" "lambda_function_policy" {
   role       = aws_iam_role.lambda_function_role.name
 }
 
+/*
 resource "aws_iam_role_policy" "lambda_sqs_message_policy" {
   name   = "lambda_sqs_message_policy"
   role   = aws_iam_role.lambda_function_role.name
   policy = data.aws_iam_policy_document.sqs_message_policy.json
 }
+*/
 
 resource "aws_iam_role_policy_attachment" "lambda_sqs_execute_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
@@ -217,11 +238,13 @@ resource "aws_iam_role" "ecs_role" {
   assume_role_policy = data.aws_iam_policy_document.ecs_policy.json
 }
 
+/*
 resource "aws_iam_role_policy" "ecs_sqs_message_policy" {
   name   = "ecs_sqs_policy"
   role   = aws_iam_role.ecs_role.name
   policy = data.aws_iam_policy_document.sqs_message_policy.json
 }
+*/
 
 resource "aws_iam_role_policy_attachment" "ecs_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
