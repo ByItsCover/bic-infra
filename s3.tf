@@ -69,6 +69,6 @@ resource "aws_s3_bucket_notification" "cover_dump_notification" {
   queue {
     queue_arn     = aws_sqs_queue.embed_queue.arn
     events        = ["s3:ObjectCreated:*"]
-    filter_suffix = ".something"
+    filter_suffix = ".bin"
   }
 }

@@ -38,6 +38,11 @@ data "aws_iam_policy_document" "s3_sqs_message_policy" {
 
     resources = [aws_sqs_queue.embed_queue.arn]
 
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
     condition {
       test     = "ArnEquals"
       variable = "aws:SourceArn"
