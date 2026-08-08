@@ -16,7 +16,7 @@ resource "aws_route_table" "private" {
 }
 
 resource "aws_route_table_association" "private" {
-  for_each = data.aws_subnets.subnet.ids
+  for_each = toset(data.aws_subnets.subnet.ids)
 
   subnet_id      = each.value
   route_table_id = aws_route_table.private.id
@@ -28,4 +28,3 @@ resource "aws_vpc_endpoint" "s3" {
 
   route_table_ids = [aws_route_table.private.id]
 }
-
