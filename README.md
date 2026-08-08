@@ -164,6 +164,7 @@ No modules.
 | <a name="output_rec_efs_access_id"></a> [rec\_efs\_access\_id](#output\_rec\_efs\_access\_id) | n/a |
 | <a name="output_rec_efs_system_id"></a> [rec\_efs\_system\_id](#output\_rec\_efs\_system\_id) | n/a |
 | <a name="output_recommend_url"></a> [recommend\_url](#output\_recommend\_url) | n/a |
+| <a name="output_s3_cover_dump_name"></a> [s3\_cover\_dump\_name](#output\_s3\_cover\_dump\_name) | n/a |
 | <a name="output_s3_db_uri"></a> [s3\_db\_uri](#output\_s3\_db\_uri) | n/a |
 | <a name="output_s3_site_bucket_id"></a> [s3\_site\_bucket\_id](#output\_s3\_site\_bucket\_id) | n/a |
 | <a name="output_s3_site_bucket_regional_domain"></a> [s3\_site\_bucket\_regional\_domain](#output\_s3\_site\_bucket\_regional\_domain) | n/a |
