@@ -4,6 +4,7 @@ aws_region = "us-east-2"
 site_bucket_name     = "bic-site-bucket"
 cover_bucket_name    = "covers-bucket"
 cover_db_folder_name = "coverdb"
+cover_dump_name      = "cover-dump"
 
 # SQS
 

@@ -28,6 +28,11 @@ variable "cover_db_folder_name" {
   description = "AWS S3 Cover DB folder name"
 }
 
+variable "cover_dump_name" {
+  type        = string
+  description = "AWS S3 Cover dump name"
+}
+
 # SQS
 
 variable "sqs_visibility_timeout" {
