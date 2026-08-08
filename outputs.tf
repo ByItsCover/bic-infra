@@ -40,6 +40,10 @@ output "s3_db_uri" {
   value = "s3://${aws_s3_bucket.cover_bucket.bucket}/${aws_s3_object.coverdb.key}"
 }
 
+output "s3_cover_dump_name" {
+  value = aws_s3_bucket.cover_dump.id
+}
+
 # CloudFront
 
 output "cf_access_control_id" {
