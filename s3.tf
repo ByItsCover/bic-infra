@@ -55,3 +55,20 @@ resource "aws_s3_object" "coverdb" {
   bucket = aws_s3_bucket.cover_bucket.id
   key    = "${var.cover_db_folder_name}/"
 }
+
+# Cover Dump
+
+resource "aws_s3_bucket" "cover_dump" {
+  bucket        = var.cover_dump_name
+  force_destroy = true
+}
+
+resource "aws_s3_bucket_notification" "cover_dump_notification" {
+  bucket = aws_s3_bucket.cover_dump.id
+
+  queue {
+    queue_arn = aws_sqs_queue.embed_queue.arn
+    events = ["s3:ObjectCreated:*"]
+    filter_suffix = ".something"
+  }
+}
