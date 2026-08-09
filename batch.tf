@@ -36,7 +36,6 @@ resource "aws_batch_compute_environment" "spot" {
       prefix           = "${env.name}-${env.compute_type}-fleet-"
       instance_types   = env.instance_types
       compute_type     = env.compute_type
-      desired_vcpus    = env.desired_vcpus
       template_id      = aws_launch_template.batch_launch_template[env.name].id
       template_version = aws_launch_template.batch_launch_template[env.name].latest_version
     }
@@ -51,9 +50,8 @@ resource "aws_batch_compute_environment" "spot" {
     instance_type = each.value.instance_types
 
 
-    max_vcpus     = var.max_batch_vcpus
-    min_vcpus     = 0
-    desired_vcpus = each.value.desired_vcpus
+    max_vcpus = var.max_batch_vcpus
+    min_vcpus = 0
 
     security_group_ids = [
       aws_security_group.batch.id

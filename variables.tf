@@ -74,7 +74,6 @@ variable "batch_envs" {
       instance_types   = list(string)
       compute_type     = string
       image_id         = string
-      desired_vcpus    = number
     })
   )
   description = "List of Batch compute environment configurations"

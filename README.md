@@ -119,7 +119,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS Region | `string` | n/a | yes |
 | <a name="input_batch_ebs_size"></a> [batch\_ebs\_size](#input\_batch\_ebs\_size) | EBS Volume size for Batch | `number` | `50` | no |
-| <a name="input_batch_envs"></a> [batch\_envs](#input\_batch\_envs) | List of Batch compute environment configurations | <pre>list(<br/>    object({<br/>      name             = string<br/>      allocation_strat = string<br/>      instance_types   = list(string)<br/>      compute_type     = string<br/>      image_id         = string<br/>      desired_vcpus    = number<br/>    })<br/>  )</pre> | n/a | yes |
+| <a name="input_batch_envs"></a> [batch\_envs](#input\_batch\_envs) | List of Batch compute environment configurations | <pre>list(<br/>    object({<br/>      name             = string<br/>      allocation_strat = string<br/>      instance_types   = list(string)<br/>      compute_type     = string<br/>      image_id         = string<br/>    })<br/>  )</pre> | n/a | yes |
 | <a name="input_cover_bucket_name"></a> [cover\_bucket\_name](#input\_cover\_bucket\_name) | AWS S3 Cover bucket name | `string` | n/a | yes |
 | <a name="input_cover_db_folder_name"></a> [cover\_db\_folder\_name](#input\_cover\_db\_folder\_name) | AWS S3 Cover DB folder name | `string` | n/a | yes |
 | <a name="input_cover_dump_name"></a> [cover\_dump\_name](#input\_cover\_dump\_name) | AWS S3 Cover dump name | `string` | n/a | yes |
