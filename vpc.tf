@@ -10,7 +10,7 @@ data "aws_subnets" "subnet" {
 }
 
 data "aws_route_table" "all_tables" {
-  for_each = toset(data.aws_subnets.subnet.ids)
+  for_each  = toset(data.aws_subnets.subnet.ids)
   subnet_id = each.value
 }
 
