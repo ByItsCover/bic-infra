@@ -33,7 +33,7 @@ resource "aws_launch_template" "batch_launch_template" {
 resource "aws_batch_compute_environment" "spot" {
   for_each = {
     for env in var.batch_envs : env.name => {
-      prefix           = "${env.name}-${env.compute_type}-batch-fleet-"
+      prefix           = "${env.name}-${env.compute_type}-fleet-"
       instance_types   = env.instance_types
       compute_type     = env.compute_type
       desired_vcpus    = env.desired_vcpus
