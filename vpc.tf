@@ -10,7 +10,7 @@ data "aws_subnets" "subnet" {
 }
 
 data "aws_route_tables" "all_tables" {
-  vpc_id = var.vpc_id
+  vpc_id = data.aws_vpc.default.id
 }
 
 # S3
