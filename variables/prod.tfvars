@@ -22,7 +22,6 @@ batch_envs = [
     instance_types   = ["default_arm64"]
     compute_type     = "SPOT"
     image_id         = "/aws/service/ecs/optimized-ami/amazon-linux-2023/arm64/recommended/image_id"
-    desired_vcpus    = 1
   },
   {
     name             = "learning"
@@ -35,7 +34,6 @@ batch_envs = [
     ]
     compute_type  = "SPOT"
     image_id      = "/aws/service/ecs/optimized-ami/amazon-linux-2023/gpu/recommended/image_id"
-    desired_vcpus = 4
   }
 ]
 
