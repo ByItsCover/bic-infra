@@ -32,6 +32,7 @@ No modules.
 | [aws_cloudfront_origin_access_control.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control) | resource |
 | [aws_cloudfront_origin_request_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_request_policy) | resource |
 | [aws_cloudfront_response_headers_policy.cdn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_response_headers_policy) | resource |
+| [aws_cognito_user_pool.auth_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool) | resource |
 | [aws_ecr_lifecycle_policy.embed_server_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.learn_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.library_search_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
@@ -118,7 +119,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS Region | `string` | n/a | yes |
 | <a name="input_batch_ebs_size"></a> [batch\_ebs\_size](#input\_batch\_ebs\_size) | EBS Volume size for Batch | `number` | `50` | no |
-| <a name="input_batch_envs"></a> [batch\_envs](#input\_batch\_envs) | List of Batch compute environment configurations | <pre>list(<br/>    object({<br/>      name             = string<br/>      allocation_strat = string<br/>      instance_types   = list(string)<br/>      compute_type     = string<br/>      image_id         = string<br/>      desired_vcpus    = number<br/>    })<br/>  )</pre> | n/a | yes |
+| <a name="input_batch_envs"></a> [batch\_envs](#input\_batch\_envs) | List of Batch compute environment configurations | <pre>list(<br/>    object({<br/>      name             = string<br/>      allocation_strat = string<br/>      instance_types   = list(string)<br/>      compute_type     = string<br/>      image_id         = string<br/>    })<br/>  )</pre> | n/a | yes |
 | <a name="input_cover_bucket_name"></a> [cover\_bucket\_name](#input\_cover\_bucket\_name) | AWS S3 Cover bucket name | `string` | n/a | yes |
 | <a name="input_cover_db_folder_name"></a> [cover\_db\_folder\_name](#input\_cover\_db\_folder\_name) | AWS S3 Cover DB folder name | `string` | n/a | yes |
 | <a name="input_cover_dump_name"></a> [cover\_dump\_name](#input\_cover\_dump\_name) | AWS S3 Cover dump name | `string` | n/a | yes |
@@ -142,6 +143,8 @@ No modules.
 |------|-------------|
 | <a name="output_api_gw_arn"></a> [api\_gw\_arn](#output\_api\_gw\_arn) | n/a |
 | <a name="output_api_gw_id"></a> [api\_gw\_id](#output\_api\_gw\_id) | n/a |
+| <a name="output_auth_user_pool_endpoint"></a> [auth\_user\_pool\_endpoint](#output\_auth\_user\_pool\_endpoint) | n/a |
+| <a name="output_auth_user_pool_id"></a> [auth\_user\_pool\_id](#output\_auth\_user\_pool\_id) | n/a |
 | <a name="output_cf_access_control_id"></a> [cf\_access\_control\_id](#output\_cf\_access\_control\_id) | n/a |
 | <a name="output_cf_cache_policy_id"></a> [cf\_cache\_policy\_id](#output\_cf\_cache\_policy\_id) | n/a |
 | <a name="output_cf_request_policy_id"></a> [cf\_request\_policy\_id](#output\_cf\_request\_policy\_id) | n/a |

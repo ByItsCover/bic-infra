@@ -50,8 +50,8 @@ resource "aws_batch_compute_environment" "spot" {
     instance_type = each.value.instance_types
 
 
-    max_vcpus     = var.max_batch_vcpus
-    min_vcpus     = 0
+    max_vcpus = var.max_batch_vcpus
+    min_vcpus = 0
 
     security_group_ids = [
       aws_security_group.batch.id
