@@ -40,7 +40,7 @@ resource "aws_cognito_user_pool" "auth_pool" {
     name                = "preferred_username"
     attribute_data_type = "String"
     mutable             = true
-    required            = true
+    required            = false
 
     string_attribute_constraints {
       min_length = var.username_req.min_length
