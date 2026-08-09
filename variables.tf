@@ -115,6 +115,18 @@ variable "email_req" {
   }
 }
 
+variable "username_req" {
+  description = "Requirements for site preferred username"
+  type = object({
+    min_length = number
+    max_length = number
+  })
+  default = {
+    min_length = 1
+    max_length = 128
+  }
+}
+
 variable "uid_req" {
   description = "Requirements for site user id"
   type = object({

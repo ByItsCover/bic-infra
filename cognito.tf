@@ -1,7 +1,7 @@
 resource "aws_cognito_user_pool" "auth_pool" {
   name = "auth-pool"
 
-  alias_attributes         = ["email"]
+  alias_attributes         = ["email", "preferred_username"]
   auto_verified_attributes = ["email"]
 
   account_recovery_setting {
@@ -31,9 +31,20 @@ resource "aws_cognito_user_pool" "auth_pool" {
     required            = true
 
     string_attribute_constraints {
-
       min_length = var.email_req.min_length
       max_length = var.email_req.max_length
+    }
+  }
+
+  schema {
+    name                = "preferred_username"
+    attribute_data_type = "String"
+    mutable             = true
+    required            = true
+
+    string_attribute_constraints {
+      min_length = var.username_req.min_length
+      max_length = var.username_req.max_length
     }
   }
 

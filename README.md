@@ -70,8 +70,6 @@ No modules.
 | [aws_iam_role_policy_attachment.lambda_sqs_execute_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.lambda_vpc_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_launch_template.batch_launch_template](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
-| [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table) | resource |
-| [aws_route_table_association.private](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
 | [aws_s3_bucket.cover_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.cover_dump](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.site_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
@@ -110,6 +108,7 @@ No modules.
 | [aws_iam_policy_document.scheduler_batch_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.scheduler_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sqs_message_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_route_tables.all_tables](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/route_tables) | data source |
 | [aws_ssm_parameter.image_id](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
 | [aws_subnets.subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
 | [aws_vpc.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
@@ -136,6 +135,7 @@ No modules.
 | <a name="input_sqs_deadletter_retention"></a> [sqs\_deadletter\_retention](#input\_sqs\_deadletter\_retention) | SQS deadletter queue message retention in seconds | `number` | `345600` | no |
 | <a name="input_sqs_visibility_timeout"></a> [sqs\_visibility\_timeout](#input\_sqs\_visibility\_timeout) | SQS message timeout in seconds | `number` | `180` | no |
 | <a name="input_uid_req"></a> [uid\_req](#input\_uid\_req) | Requirements for site user id | <pre>object({<br/>    min_length = number<br/>    max_length = number<br/><br/>  })</pre> | <pre>{<br/>  "max_length": 36,<br/>  "min_length": 36<br/>}</pre> | no |
+| <a name="input_username_req"></a> [username\_req](#input\_username\_req) | Requirements for site preferred username | <pre>object({<br/>    min_length = number<br/>    max_length = number<br/>  })</pre> | <pre>{<br/>  "max_length": 128,<br/>  "min_length": 1<br/>}</pre> | no |
 
 ## Outputs
 
