@@ -128,6 +128,7 @@ No modules.
 | <a name="input_hardcover_api_key"></a> [hardcover\_api\_key](#input\_hardcover\_api\_key) | The HardCover API Key | `string` | n/a | yes |
 | <a name="input_hardcover_key_name"></a> [hardcover\_key\_name](#input\_hardcover\_key\_name) | Name of the HardCover key secret | `string` | `"hardcover-key"` | no |
 | <a name="input_learn_batch_name"></a> [learn\_batch\_name](#input\_learn\_batch\_name) | Batch env name for Learn batch job and queue | `string` | n/a | yes |
+| <a name="input_listopia_batch_name"></a> [listopia\_batch\_name](#input\_listopia\_batch\_name) | Batch env name for Listopia batch job and queue | `string` | n/a | yes |
 | <a name="input_max_batch_vcpus"></a> [max\_batch\_vcpus](#input\_max\_batch\_vcpus) | Maximum EC2 VCPUs a Batch job can use | `number` | `64` | no |
 | <a name="input_password_req"></a> [password\_req](#input\_password\_req) | Requirements for site user passwords | <pre>object({<br/>    min_length  = number<br/>    req_upper   = bool<br/>    req_lower   = bool<br/>    req_numbers = bool<br/>    req_symbols = bool<br/>  })</pre> | n/a | yes |
 | <a name="input_site_bucket_index_doc"></a> [site\_bucket\_index\_doc](#input\_site\_bucket\_index\_doc) | Index document file name within site S3 bucket | `string` | `"index.html"` | no |
@@ -160,6 +161,7 @@ No modules.
 | <a name="output_learn_batch_queue_arn"></a> [learn\_batch\_queue\_arn](#output\_learn\_batch\_queue\_arn) | n/a |
 | <a name="output_learn_ecr_name"></a> [learn\_ecr\_name](#output\_learn\_ecr\_name) | n/a |
 | <a name="output_library_search_ecr_name"></a> [library\_search\_ecr\_name](#output\_library\_search\_ecr\_name) | n/a |
+| <a name="output_listopia_batch_queue_arn"></a> [listopia\_batch\_queue\_arn](#output\_listopia\_batch\_queue\_arn) | n/a |
 | <a name="output_listopia_parser_ecr_name"></a> [listopia\_parser\_ecr\_name](#output\_listopia\_parser\_ecr\_name) | n/a |
 | <a name="output_rec_efs_access_arn"></a> [rec\_efs\_access\_arn](#output\_rec\_efs\_access\_arn) | n/a |
 | <a name="output_rec_efs_access_id"></a> [rec\_efs\_access\_id](#output\_rec\_efs\_access\_id) | n/a |

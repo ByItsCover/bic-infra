@@ -13,7 +13,7 @@ sqs_deadletter_retention = 604800 # 1 week
 
 # Batch
 
-learn_batch_name = "learning"
+learn_batch_name    = "learning"
 listopia_batch_name = "listopia"
 
 batch_envs = [
