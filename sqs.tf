@@ -1,3 +1,5 @@
+# Embed Server
+
 resource "aws_sqs_queue" "embed_queue" {
   name                       = "embed-queue"
   visibility_timeout_seconds = var.sqs_visibility_timeout
@@ -20,4 +22,11 @@ resource "aws_sqs_queue_redrive_allow_policy" "embed_queue_redrive" {
     redrivePermission = "byQueue",
     sourceQueueArns   = [aws_sqs_queue.embed_queue.arn]
   })
+}
+
+# Batch Eventbridge
+
+resource "aws_sqs_queue" "eventbridge_deadletter" {
+  name                      = "eventbridge-queue"
+  message_retention_seconds = var.sqs_deadletter_retention
 }
