@@ -114,6 +114,10 @@ output "learn_batch_queue_arn" {
   value = aws_batch_job_queue.queue[var.learn_batch_name].arn
 }
 
+output "listopia_batch_queue_arn" {
+  value = aws_batch_job_queue.queue[var.listopia_batch_name].arn
+}
+
 # EventBridge
 
 output "eventbridge_deadletter_arn" {

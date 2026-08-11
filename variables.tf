@@ -66,6 +66,11 @@ variable "learn_batch_name" {
   description = "Batch env name for Learn batch job and queue"
 }
 
+variable "listopia_batch_name" {
+  type        = string
+  description = "Batch env name for Listopia batch job and queue"
+}
+
 variable "batch_envs" {
   type = list(
     object({
@@ -81,6 +86,11 @@ variable "batch_envs" {
   validation {
     condition     = contains([for env in var.batch_envs : env.name], var.learn_batch_name)
     error_message = "Batch envs must contain an entry for 'learn' batch environment"
+  }
+
+  validation {
+    condition     = contains([for env in var.batch_envs : env.name], var.listopia_batch_name)
+    error_message = "Batch envs must contain an entry for 'listopia' batch environment"
   }
 }
 
