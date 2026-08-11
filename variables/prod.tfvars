@@ -20,9 +20,9 @@ batch_envs = [
   {
     name             = "listopia"
     allocation_strat = "SPOT_CAPACITY_OPTIMIZED"
-    instance_types   = ["default_arm64"]
+    instance_types   = ["default_x86_64"]
     compute_type     = "SPOT"
-    image_id         = "/aws/service/ecs/optimized-ami/amazon-linux-2023/arm64/recommended/image_id"
+    image_id         = "/aws/service/ecs/optimized-ami/amazon-linux-2023/recommended/image_id"
   },
   {
     name             = "learning"
