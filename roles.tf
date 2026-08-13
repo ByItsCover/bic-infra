@@ -195,10 +195,7 @@ data "aws_iam_policy_document" "scheduler_batch_policy" {
       "batch:TerminateJob"
     ]
 
-    resources = [
-      aws_batch_job_queue.queue[var.learn_batch_name].arn,
-      aws_batch_job_queue.queue[var.listopia_batch_name].arn
-    ]
+    resources = values(aws_batch_job_queue.queue)[*].arn
   }
 }
 
